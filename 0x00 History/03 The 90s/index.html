@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://www.scriptsharks.com/0x00%20History/03%20The%2090s/">
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>The 90s - ScriptSharks</title>
+    <title>Polymorphs, Macros and RATs! (Oh My!) - ScriptSharks</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -40,7 +40,11 @@
           ]},
           {title: "Nobody is Safe", url: "#nobody-is-safe", children: [
           ]},
+          {title: "Knock, Knock", url: "#knock-knock", children: [
+          ]},
           {title: "CIH, the Space-Filler", url: "#cih-the-space-filler", children: [
+          ]},
+          {title: "Plague of RATs", url: "#plague-of-rats", children: [
           ]},
           {title: "Outlook, Look Out", url: "#outlook-look-out", children: [
           ]},
@@ -108,11 +112,45 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>In 1995, the same year that the <a href="https://en.wikipedia.org/wiki/Hackers_(film)">greatest movie of all time</a> was released to adoring theater audiences, the <a href="http://virus.wikidot.com/concept">Concept</a> virus became the first known example of a <a href="https://en.wikipedia.org/wiki/Macro_virus">Macro Virus</a>, abusing Microsoft Word's built-in macro-scripting language to infect documents and take unwanted actions on systems.</p>
 <p>In 1996, <a href="http://web.archive.org/web/20101108055516/http://vx.netlux.org/lib/static/vdat/mvsol001.htm">XML.Laroux</a> was the first Microsoft Excel macrovirus. These viruses were the first viruses designed to infect documents, rather than executable files, and they were the first cross-platform viruses, capable of running on any system with Microsoft Office installed.</p>
 <h1 id="nobody-is-safe">Nobody is Safe</h1>
-<p>The <a href="https://en.wikipedia.org/wiki/Staog">Staog</a> virus dropped in 1996, and was the first computer virus written for Linux. Fortunately, the vulnerabilities exploited by the virus were patched quickly, and the virus died off with little fanfare. In the years since, there have been <a href="https://www.unixmen.com/meet-linux-viruses/">numerous Linux malware discovered in the wild</a>, yet Linux users continue to proudly boast: "I don't need antivirus; I run Linux." (They're not alone; macOS users make the same boast.)</p>
+<p>1996 also saw the release of the <a href="https://en.wikipedia.org/wiki/Staog">Staog</a> virus, the first computer virus written for Linux. Fortunately, the vulnerabilities exploited by the virus were patched quickly, and the virus died off with little fanfare. In the years since, there have been <a href="https://www.unixmen.com/meet-linux-viruses/">numerous Linux malware discovered in the wild</a>, yet Linux users continue to proudly boast: "I don't need antivirus; I run Linux." (They're not alone; macOS users make the same boast.)</p>
+<h1 id="knock-knock">Knock, Knock</h1>
+<p>As if macro viruses and Linux viruses weren't enough, 1996 also brought <a href="https://web.archive.org/web/20081201090344/http://www.megasecurity.org/trojans/n/noknok/Noknok5.0.html">NokNok 5.0</a>, the first (that I'm aware of) Remote-Access Trojan (RAT).</p>
+<p>Tools for remote desktop access have been around <a href="https://tedium.co/2021/02/12/remote-desktop-access-history/">since the early '80s</a>, with software like <a href="https://en.wikipedia.org/wiki/Carbon_Copy_(software)">Carbon Copy</a> and <a href="https://en.wikipedia.org/wiki/Timbuktu_(software)">Timbuktu</a> leading the pack. These tools were designed for legitimate use, and made no attempt to evade detection or deceive users.</p>
+<p>NokNok changed the game, providing remote control capabilities in a discreet package which could be installed without victims' knowledge. This was typically achieved via the <a href="https://en.wikipedia.org/wiki/Trojan_horse_(computing)">Trojan Horse</a> technique, wherein a malicious payload is attached to a legitimate, desirable application.</p>
+<p>This technique is a form of Social Engineering, much like its <a href="https://en.wikipedia.org/wiki/Trojan_Horse">mythical namesake</a>, and has seen widespread popularity among file-sharing and piracy communities, where users often seek free "cracked" copies or dodgy "key generators" ("keygens") for expensive legitimate software.</p>
 <h1 id="cih-the-space-filler">CIH, the Space-Filler</h1>
 <p>In 1998, the <a href="https://en.wikipedia.org/wiki/CIH_(computer_virus)">CIH virus</a> infected sixty million computers worldwide, destroying data and, in many cases, erasing the system BIOS. The virus caused an estimated US$1 billion in damages, yet no charges were filed against its author, Chen Ing-hau, who claimed that he wrote the virus to challenge the AV industry's bold detection claims. He and a fellow student, Weng Shi-hao, co-authored an antivirus, enabling users to safely remove CIH from infected systems.</p>
 <p>At the time CIH was released, many viruses would prepend or append their viral code to the files they infected, resulting in changes to the size of the infected files. AV vendors caught on to this, and created detections for file-size alterations. To defeat this detection mechanism, the CIH authors developed a method to infect files without altering their size.</p>
 <p>When languages like C++ or Rust are compiled to binary, assemblers often include "gaps" of unused bytes in the executable file, padding sections to ensure proper byte alignment. The CIH virus would write its code into these gaps, thus infecting the file without altering its size.</p>
+<h1 id="plague-of-rats">Plague of RATs</h1>
+<p>Following NokNok, RATs became a hot commodity. In 1998, the <a href="https://en.wikipedia.org/wiki/Cult_of_the_Dead_Cow">Cult of the Dead Cow</a> (cDc) released <a href="https://en.wikipedia.org/wiki/Back_Orifice">Back Orifice</a> (BO), a tool they designed to demonstrate the insecurity of Windows systems. Despite claims that it was intended only for legitimate uses, the tool employed evasive tactics and could be installed without user interaction, making it perfect for use as a Trojan.</p>
+<p>In 1999, cDc released <a href="https://en.wikipedia.org/wiki/Back_Orifice_2000">Back Orifice 2000</a> (BO2k), the successor to their previous year's release. BO2k added support for Windows NT, 2000 and XP, and employed a plugin architecture, enabling new functionality to be pushed to clients on-the-fly. As before, BO2k was touted as a legitimate tool. Here are a few of the plugins provided by the tool:</p>
+<ul>
+<li>Remote control of mouse and keyboard.</li>
+<li>Remote observation of the user's desktop and audio.</li>
+<li>Rootkit behavior, capable of hiding things from the system.</li>
+<li>Bypass firewalls via tunneling.</li>
+<li>Route through "connection chains" of multiple infected hosts.</li>
+<li>Live keylogging.</li>
+<li>Clientless Command-and-Control (C2) via IRC.</li>
+</ul>
+<p>With features like these, it's no surprise that BO2k was classified as malware in most AV engines.</p>
+<p>Following on BO2k's coattails, <a href="https://www.sub7crew.org/archive/history/">Sub7</a> was also released in 1999, and swiftly became one of the most popular RATs in the world. Much like BO2k, Sub7 was designed for trojanized installation, and provided a variety of similar features:</p>
+<ul>
+<li>Remote control and observation.</li>
+<li>Recovering cached passwords.</li>
+<li><a href="https://en.wikipedia.org/wiki/ICQ">ICQ</a> account takeover.</li>
+<li>C2 via IRC.</li>
+<li>Keylogging.</li>
+<li>Port scanning and redirection.</li>
+</ul>
+<p>Sub7 also included some "prank" features, making it popular among <a href="https://en.wikipedia.org/wiki/Script_kiddie">skids</a>:</p>
+<ul>
+<li>Open and close the CD tray.</li>
+<li>Swap mouse buttons.</li>
+<li>Use text-to-speech to make the computer speak.</li>
+</ul>
+<p>In the decades folowing the release of BO2k and Sub7, <a href="https://www.civilsphereproject.org/research/a-study-of-remote-access-trojans">the popularity and proliferation of RATs has soared</a>, and the focus has shifted from pranks to profits.</p>
 <h1 id="outlook-look-out">Outlook, Look Out</h1>
 <p>In 1999, a variety of malware was released which took advantage of Microsoft products, including Outlook, Outlook Express, and Office.</p>
 <ul>
@@ -128,7 +166,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>In the years following the release of Windows 3.0, Microsoft became the global leader in the desktop OS market. Much to the chagrin of Mac and Linux users, Microsoft's products became the most wide-spread software in the world, despite being plagued by vulnerabilities and malware. To this day, the vast majority of malware targets Microsoft Office and Windows. These products continue to be the most common route for malware to infect systems and networks, whether via exploitation of 0-day vulnerabilities, or simply by abusing the built-in functionality of the software. In fact, one could argue that <em>the single most effective way to prevent malware infections</em> would be to eliminate all Microsoft products from your workplace.</p>
 <p>Still, Microsoft's global market dominance continues unabated. In fact, they now offer <a href="https://en.wikipedia.org/wiki/Microsoft_Defender">Microsoft Defender</a>, a clever way to turn Microsoft's historically bug-ridden software into yet another revenue source. Defender protects Windows systems against malware which, historically, abuses Microsoft's own products to infect and spread.</p>
 <p>Microsoft creates and sells exploitable products, then creates and sells exploit protection.</p>
-<p>That's like if Kia sold cars that sometimes exploded, then sold a separate add-on package that prevented the explosions. Brilliant!</p>
+<p>That's like if Kia sold cars that sometimes exploded, then sold a separate add-on package that prevented the explosions.</p>
+<p>Brilliant!</p>
 
   <br>
     
