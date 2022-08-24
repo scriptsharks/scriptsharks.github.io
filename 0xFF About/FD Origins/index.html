@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0xFF%20About/FD%20Origins/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>ScriptSharks Origins - ScriptSharks</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Prologue", url: "#_top", children: [
+          ]},
+          {title: "Attack", url: "#attack", children: [
+              {title: "Preparation", url: "#preparation" },
+              {title: "Reconnaissance", url: "#reconnaissance" },
+              {title: "Initial Access", url: "#initial-access" },
+              {title: "Privilege Escalation", url: "#privilege-escalation" },
+              {title: "Discovery", url: "#discovery" },
+              {title: "Collection", url: "#collection" },
+              {title: "Impact", url: "#impact" },
+          ]},
+          {title: "Aftermath", url: "#aftermath", children: [
+              {title: "Disclosure", url: "#disclosure" },
+              {title: "Remediation", url: "#remediation" },
+          ]},
+          {title: "Retrospect", url: "#retrospect", children: [
+          ]},
+          {title: "Rebirth", url: "#rebirth", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../FE%20Changelog/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../FE%20Changelog/" class="btn btn-xs btn-link">
+        Changelog
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../0x00%20History/03%20The%2090s/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../0x00%20History/03%20The%2090s/" class="btn btn-xs btn-link">
+        Polymorphs, Macros and RATs! (Oh My!)
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1>ScriptSharks Origins</h1>
+
+<p><em><strong>Disclaimer:</strong> This story is told from memory. I expect there will be inaccuracies. Where appropriate, I've invented code or console transcripts that attempt to represent data lost to time. I've recreated them as accurately as I can. I aim to tell the truth of my experience, though I cannot guarantee the veracity of every detail.</em></p>
+<p>Grab a drink, pull up a seat, and I'll tell you the story behind <strong>ScriptSharks.com</strong>. I never knew the domain's original owner personally, but he (and his website) changed my life... Though, not in the way one might expect.</p>
+<p>Read on, and you'll understand.</p>
+<h1 id="prologue">Prologue</h1>
+<p>Back in 2001, I was a punk-ass wannabe hacker in high school. I'd been writing software for about six years, and after watching a <a href="https://www.pbs.org/wgbh/pages/frontline/shows/hackers/">PBS Frontline Documentary on hackers</a>, I became obsessed with the subject. I collected every scrap of data I could find, from low-bar "script kiddie" hack-tools to sophisticated exploitation whitepapers. I read books and 'zines (like <a href="https://www.2600.com/">2600</a> and <a href="http://www.phrack.org/">PHRACK</a>), watched videos, and infected my parents' PC with more malware than I care to admit. I learned about hacker history back to the '60s, about their culture and communities, and about famous groups like the <a href="https://en.wikipedia.org/wiki/Masters_of_Deception">Masters of Deception</a> and the <a href="https://en.wikipedia.org/wiki/Legion_of_Doom_(hacking)">Legion of Doom</a> (of the alleged "<a href="https://en.wikipedia.org/wiki/Great_Hacker_War">Great Hacker War</a>"). I was insatiable.</p>
+<h1 id="attack">Attack</h1>
+<h2 id="preparation">Preparation</h2>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1593/002/">T1593.002</a>)</p>
+<p>In 2003, after learning about <a href="https://www.w3schools.com/sql/sql_injection.asp">SQL Injection</a> (SQLi), I was eager to practice what I'd learned. Back then, we didn't have sites like <a href="https://www.hackthebox.com/">HackTheBox</a> providing practice labs. Even <a href="https://www.hackthissite.org/">HackThisSite</a> was new, and was not well-known. Hackers had two choices: either get legal access to test hardware, or practice your skills "in the wild."</p>
+<p>I was too broke to afford my own computer, let alone to buy a spare PC for "target practice," and I didn't know any other hackers IRL. I decided to take the risk and practice on live targets. (As a kid, rational thinking and sound judgment were not my strong suits.)</p>
+<p>I used my <a href="https://en.wiktionary.org/wiki/Google-fu">Google-fu</a> to search for vulnerable websites. I did a basic <code>inurl:login.php</code> search, and among the results, I found a link to <strong><a href="https://web.archive.org/web/20031229230816/http://www.scriptsharks.com/login.php">scriptsharks.com</a></strong>. On visiting the site, I was excited to see that it was a site for programmers, including guides for PHP (which I was learning at the time). I decided to learn more about the site and its owner.</p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1589/">T1589</a>, <a href="https://attack.mitre.org/techniques/T1592/002/">T1592.002</a>, <a href="https://attack.mitre.org/techniques/T1594/">T1594</a>, <a href="https://attack.mitre.org/techniques/T1595/">T1595</a>)</p>
+<p>In 2000, Stephen "Gabriel" Lane (a.k.a. "Calico Jack")—a <a href="https://web.archive.org/web/20040421073844/http://scriptsharks.com/bike/index.php">motorcycle enthusiast</a> and <a href="https://web.archive.org/web/20030108200615/http://scriptsharks.com/resume.html">Senior Software Engineer for the New Orleans Saints</a>—created ScriptSharks.com as a place "<a href="https://web.archive.org/web/20020125192310/http://scriptsharks.com/">designed by a programmer for programmers</a>," where he could share tutorials, manage code projects, and provide other resources for programmers. He was fluent in numerous programming languages, and provided the full source code for dozens of programs he'd written, all for free.</p>
+<p>When I first started programming, back in 1995, I didn't have the Internet, and it was hard to find resources from which to learn. So I appreciated when successful people like Stephen shared their code and experience with the community. It seemed like he was living my dream, and he wasn't much older than me.</p>
+<p>From his website, I knew that Stephen used the Linux operating system, and designed websites using PHP, hosted with Apache and MySQL. (A typical <a href="https://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP stack</a>.) I scanned the server's ports; <code>22</code> and <code>80</code> were open, but not much else. These ports were provided by <strong>OpenSSH</strong> and <strong>Apache</strong>, each fully up-to-date and patched.</p>
+<h2 id="initial-access">Initial Access</h2>
+<p>Curiosity killed the cat. I'm glad I'm not a cat.</p>
+<h3 id="vuln-discovery">Vuln Discovery</h3>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1588/006/">T1588.006</a>)</p>
+<p>After learning about Stephen and his technical knowledge, I was excited to explore the guides and source code provided on his site. My first stop was his guide to designing <a href="https://web.archive.org/web/20031218204612/http://www.scriptsharks.com:80/articles/sessions.php">Sessions and Authentication Systems</a> in PHP. My original goal was to practice SQLi attacks; it seemed likely that his site's auth code would be similar to that in his guide, which included SQL table layouts and code samples. If there was a vulnerability to be found, this was a good place to start hunting.</p>
+<p>Here's the session-checking code from Stephen's guide:</p>
+<pre><code class="language-php">function is_logged_in() {
+    global $session_id;
+    $select = &quot;SELECT Logged_In FROM Sessions WHERE Session_ID = '$session_id'&quot;;
+    $result = mysql_db_query(&quot;Your DB&quot;, $select) or die (mysql_error() . &quot;&lt;HR&gt;\n$select&quot;);
+    $db = mysql_fetch_array($result);
+    return $db[Logged_In];
+}
+</code></pre>
+<p>And here's the logout code:</p>
+<pre><code class="language-php">session_start();
+$session_id = session_id();
+$insert = &quot;UPDATE Sessions SET Logged_In = '0' WHERE Session_ID = '$session_id'&quot;;
+$result = mysql_db_query(&quot;Your DB&quot;, $insert) or die(mysql_error() . &quot;&lt;hr /&gt;\n&quot; . $insert);
+</code></pre>
+<p>On reading the code, I realized the <code>SELECT</code> query was not being sanitized in the <code>is_logged_in</code> function, nor was the <code>UPDATE</code> query in the logout code. Theoretically, someone could de-authenticate any user they wished, or authenticate as any user, as long as they had some way to control the contents of the <code>$session_id</code> variable.</p>
+<p>Stephen had failed to sanitize database inputs in his guide; perhaps the same would be true of his login page?</p>
+<h3 id="vuln-confirmation">Vuln Confirmation</h3>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1190/">T1190</a>)</p>
+<p>I decided to test the login for SQLi vulnerabilities. If the <code>login.php</code> script were written similar to the code from his tutorial, the code would likely include a SQL query something like this:</p>
+<pre><code class="language-php">$select = &quot;SELECT * FROM Users WHERE Username = '$username' AND Password = '$password' LIMIT 1&quot;;
+</code></pre>
+<p>When called on the database, the <code>$username</code> and <code>$password</code> variables would be substituted for user-provided values. If I entered <code>' OR '1'='1</code> as both the username and password, the query would return the first user in the database. In most cases, the first user in the database is an admin.</p>
+<p>I did not actually expect my attack to work. Stephen's tutorial was intended to be basic, for the sake of learning. Considering the experience listed on his resumé, I expected the <code>$username</code> and <code>$password</code> variables to be sanitized before being passed to the database. So I was legitimately surprised when, upon executing my SQLi attack, I was successfully authenticated as the admin user, <code>sglane</code>.</p>
+<p>"Holy crap," I thought. "I got in!" It was an incredible rush. I was simultaneously thrilled that my attack had worked, and terrified that I was going to get caught and arrested under the <a href="https://www.nacdl.org/Landing/ComputerFraudandAbuseAct">CFAA</a> over a silly SQLi attack. (Funny how consequences only came to mind <em>after</em> I'd done the attack.)</p>
+<p>I hadn't caused any harm, though; and besides, this was Stephen's personal page, not attached to some hyper-litigious corporation. No harm, no foul, right?</p>
+<p>My excitement outweighed my fear. I decided to press further. By altering my query, I could skip the <code>sglane</code> user and authenticate as the second user in the database:</p>
+<ul>
+<li>Username: <code>' OR '1'='1</code></li>
+<li>Password: <code>' OR '1'='1' AND Username != 'sglane</code></li>
+</ul>
+<p>Executing the attack, I was successfully authenticated as the second user in the database. From there it was a simple matter to enumerate all the users, one by one, simply adding a new <code>Username != 'blah'</code> clause to the query for each discovered user.</p>
+<p>Not bad for my first real-world attempt at SQLi!</p>
+<h3 id="account-compromise">Account Compromise</h3>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1212/">T1212</a>, <a href="https://attack.mitre.org/techniques/T1552/">T1552</a>, <a href="https://attack.mitre.org/techniques/T1586/">T1586</a>)</p>
+<p>I was quite pleased with my accomplishment, but I was not done yet. What good are usernames without passwords? I searched around, unable to find an obvious way to retrieve the password from the database. I decided to try "blind" injection, enumerating the password character-by-character:</p>
+<ul>
+<li>Username: <code>sglane</code></li>
+<li>Password: <code>' OR Password LIKE 'a%</code></li>
+</ul>
+<p>If the password started with <code>a</code>, I'd be authenticated. Otherwise, I'd be returned to the login screen, where I'd check every subsequent character until I found a match. Then I could start on the 2nd character, and so on. Once I'd uncovered the first password, I could move on to the second username, and repeat the process. Without automation, this process could take ages, but I was young and optimistic, and people didn't often use random 20-character passwords back then.</p>
+<p>Imagine my surprise when I found the complete password <em>on the first attempt.</em></p>
+<p>After sending my injected credentials, the site rejected my attempt and returned me to the login page. However, I noticed that the login form had been re-populated upon my return, rather than preseting me with empty fields. "Curious," I thought. "What values are in the form fields?"</p>
+<p>Viewing the page source code, I was appalled to discover that the login script, while refusing my attempt, had actually filled in the <em>correct password for the specified user</em>, taken straight out of the database. The password was right there, in clear-text, in the HTML of the page.</p>
+<p>It appeared that Stephen had intended the script to re-populate the form fields with the user's original input upon returning to the login page, like so:</p>
+<pre><code class="language-php">&lt;?php
+$username = $_POST['username'];
+$password = $_POST['password'];
+$query = &quot;SELECT Username, Password FROM Users WHERE Username = '$username' AND Password = '$password' LIMIT 1&quot;;
+$result = mysql_db_query(&quot;Your DB&quot;, $query) or die(mysql_error() . &quot;&lt;hr /&gt;\n&quot; . $query);
+$values = mysql_fetch_array($result);
+if($values['Username'] == $username &amp;&amp; $values['Password'] == $password) {
+    /* Redirect the user to the projects page. */
+    header(&quot;Location: projects.php&quot;);
+    exit;
+} else {
+    /* Show login fields again. */
+?&gt;
+&lt;form&gt;
+    &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&lt;?php echo $username; ?&gt;&quot; /&gt;
+    &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&lt;?php echo $password; ?&gt;&quot; /&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Login&quot; /&gt;
+&lt;/form&gt;
+&lt;?php
+    exit;
+}
+?&gt;
+</code></pre>
+<p>However, there was a bug in Stephen's code: rather than using the values pulled from <code>$_POST</code>, he used the values returned by the database:</p>
+<pre><code class="language-php">[...]
+$values = mysql_fetch_array($result);
+[...]
+&lt;form&gt;
+    &lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;&lt;?php echo $values['Username']; ?&gt;&quot; /&gt;
+    &lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&lt;?php echo $values['Password']; ?&gt;&quot; /&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Login&quot; /&gt;
+&lt;/form&gt;
+[...]
+</code></pre>
+<p>This is an easy mistake to make, and a difficult one to notice when troubleshooting. If my suspicion was correct, all I had to do was enter the correct username, along with an incorrect password, click "Login," then (after the login was rejected) click "Login" again, and I'd be authenticated as whichever user I wished.</p>
+<p>I tried. It worked.</p>
+<p>10 minutes later I had the passwords for <em>every single user of ScriptSharks.com</em>. I could log in as anyone, and see all the projects they had created on the site.</p>
+<p>But that wasn't enough. I was feeling euphoric, my confidence boosted by my success. "How far can I go?" I thought. "Can I get root?"</p>
+<h3 id="password-reuse">Password Reuse</h3>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1021/004/">T1021.004</a>, <a href="https://attack.mitre.org/techniques/T1078/003/">T1078.003</a>)</p>
+<p>With a list of valid account credentials, I turned my attention to the <strong>SSH</strong> server running on port <code>22</code>. These days we consider it bad practice to re-use passwords for multiple accounts. However, back in 2002, password reuse was still quite common, and <code>sglane</code> was no exception.</p>
+<p>I downloaded <a href="https://www.putty.org/">PuTTY</a>, an SSH client for Windows, and connected to ScriptSharks.com's SSH server, using the credentials I had recovered for <code>sglane</code>. The credentials worked, and I was presented with a command prompt.</p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1548/003/">T1548.003</a>)</p>
+<p>Having gained access to the system as <code>sglane</code>, I wanted to elevate my privileges to <code>root</code>. Since <code>sglane</code> was an admin, I could simply use <code>sudo</code> to obtain root access, providing credentials when prompted:</p>
+<pre><code class="language-shell">sglane@webserver:~$ sudo su
+[sudo] password for sglane:
+root@webserver:/home/sglane#
+</code></pre>
+<p>This worked; I was logged in as <code>root</code>.</p>
+<h2 id="discovery">Discovery</h2>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1003/008/">T1003.008</a>, <a href="https://attack.mitre.org/techniques/T1518/">T1518</a>, <a href="https://attack.mitre.org/techniques/T1083/">T1083</a>, <a href="https://attack.mitre.org/techniques/T1087/001/">T1087.001</a>, <a href="https://attack.mitre.org/techniques/T1552/001/">T1552.001</a>)</p>
+<p>After obtaining <code>root</code> access, I explored the system further.</p>
+<p>Reading the <code>/etc/passwd</code> file revealed the <code>www-data</code> account, which is the default account used by the <strong>Apache</strong> web server. (I could have also dumped the contents of <code>/etc/shadow</code> to see the password hashes for other accounts, but I did not have access to a password-cracking utility like <a href="https://www.openwall.com/john/">John the Ripper</a> at the time, so I left the hashes alone.)</p>
+<p>Looking in the <code>/var/www</code> directory (the default <strong>Apache</strong> webroot at the time), I discovered that <code>scriptsharks.com</code> had its own subdirectory, along with three others*:</p>
+<pre><code class="language-shell">root@webserver:/home/sglane# ls -lh /var/www
+total 16K
+drwxr-xr-x 2 root    root 4.0K Aug  9 18:15 onlineshop.com
+drwxr-xr-x 2 root    root 4.0K Dec 30  2001 phpmyadmin
+drwxr-xr-x 2 root    root 4.0K May 12 11:05 retailstore.com
+drwxr-xr-x 2 root    root 4.0K Apr 19 05:02 scriptsharks.com
+</code></pre>
+<p><em>* Note: I have long forgotten the domains for the two online shops Stephen managed, so I've used <code>onlineshop.com</code> and <code>retailstore.com</code> as generic substitutions.</em></p>
+<p>Stephen was using one server to host ScriptSharks and two online retail stores, as well as the <a href="https://www.phpmyadmin.net/">phpMyAdmin</a> web-based MySQL administration tool.</p>
+<p>Browsing to the <code>scriptsharks.com</code> directory, I found the site's PHP source code, which included database connection credentials. The credentials appeared to be site-specific, with ScriptSharks and the online stores each using a separate account. However, upon visiting the <code>phpMyAdmin</code> service hosted on the website, I was able to authenticate as <code>sglane</code> using the password I'd recovered previously, and was able to access the databases for all three sites.</p>
+<h2 id="collection">Collection</h2>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1005/">T1005</a>, <a href="https://attack.mitre.org/techniques/T1560/001/">T1560.001</a>)</p>
+<p>These databases included tables for user accounts, product information, customer orders, and more. They included cleartext usernames, emails and passwords for all accounts on all three sites, as well as details for every order placed on the two retail sites, including the customer's name, shipping address, and credit card information.</p>
+<p>If a malicious hacker got access to these records, it could cause serious trouble for Stephen and his online businesses. Fortunately, my motivations were intellectual, not material; I had no interest in abusing the data. Quite the opposite! Following the discovery, I knew I had to talk to Stephen about securing his websites.</p>
+<p>My predicament was this: How do I reveal the vulnerabilities in Stephen's websites so he'll take me seriously, without compromising system security, and without getting arrested for computer crimes? At the time, the concept of <a href="https://en.wikipedia.org/wiki/Coordinated_vulnerability_disclosure">Coordinated Vulnerability Disclosure</a> was not yet widely known, despite the fact that vulnerability disclosure had been a subject of heated debate <a href="https://en.wikipedia.org/wiki/Full_disclosure_(computer_security)#The_vulnerability_disclosure_debate">since the 1800s</a>.</p>
+<p>I weighed my options: If I claimed I had hacked his site without providing proof, he would dismiss my claims. What proof would suffice? A dump of the database would be sufficient; it would demonstrate that sensitive data was accessed, giving credibility to my claims. So I used <code>mysqldump</code> to export all databases to a single file:</p>
+<pre><code class="language-shell">root@webserver:/home/sglane# mysqldump --all-databases -u sglane -p secretpassword &gt; /home/sglane/databases.sql
+</code></pre>
+<p>The resulting file was quite large, so I compressed it with <code>zip</code>, encrypting the contents with a password—the same password used to authenticate with the <code>sglane</code> account:</p>
+<pre><code class="language-shell">root@webserver:/home/sglane# zip -p secretpassword databases.zip databases.sql
+</code></pre>
+<p>I had my proof; now I needed to consider how to provide it. Malicious attackers would simply exfiltrate the file, eager to sell the data to credit fraudsters or cash-in themselves. However, I did not want the data to leave the system; not only would this look bad for me—committing actual data theft would undermine any ethical defense I could build—but it would also be a security risk for Stephen and his business. As it stood, the only way to steal the data would be to attack Stephen's systems. But if the same data were also on my own system or stored on the 'net somewhere, then the data would be at even greater risk of compromise simply by existing in multiple places.</p>
+<p>Rather than exfiltrate the data prior to disclosure, I simply left the encrypted <code>databases.zip</code> file in Stephen's home directory, and deleted the original <code>databases.sql</code> dump file. Then I began drafting an email, letting Stephen know I had discovered vulnerabilities on his server, and had left the <code>databases.zip</code> file in his home directory as proof—encrypted with his own secret password. This way, I didn't have to transmit the password via email; I could simply say "use the same password you use everywhere else." Using his own password to encrypt the dump file provided additional proof of compromise.</p>
+<h2 id="impact">Impact</h2>
+<p>(MITRE: <a href="https://attack.mitre.org/techniques/T1485/">T1485</a>, <a href="https://attack.mitre.org/techniques/T1489">T1489</a>, <a href="https://attack.mitre.org/techniques/T1491">T1491</a>, <a href="https://attack.mitre.org/techniques/T1499">T1499</a>, <a href="https://attack.mitre.org/techniques/T1529">T1529</a>, <a href="https://attack.mitre.org/techniques/T1531/">T1531</a>, <a href="https://attack.mitre.org/techniques/T1561">T1561</a>, <a href="https://attack.mitre.org/techniques/T1565/001/">T1565.001</a>)</p>
+<p>While my intentions were never malicious, I was sure to outline some of the risks inherent in the vulnerabilities I'd discovered. For example, there was the obvious risk of credit card fraud and identity theft from the customer data, but that was just the tip of the iceberg.</p>
+<p>With access to the database, attackers could modify data. They could delete legitimate orders, or lock people out of their accounts. They could alter orders, rerouting legitimate purchases to the attackers' address. They could change prices, alter inventory levels, or double-charge customers. They could create new orders, mark them as paid but not shipped, and obtain free products from Stephen's stores. Or they could mark products as returned, but not yet refunded, and steal money.</p>
+<p>Looking beyond the database, it would also be possible for attackers to deface Stephen's websites, alter their source code, host and transmit malicious code or other illicit data, use the site to conduct a phishing attack, and even use the site as a C2 server for a malware botnet.</p>
+<p>If they're feeling destructive, attackers could use <code>sudo rm -rf /</code> command to wipe the server's filesystem. Or a fork-bomb could cause the system to become non-responsive. Or, if they're feeling lazy, they could simply <code>sudo shutdown -h now</code> to take the server offline.</p>
+<p>But the impact wasn't limited to Stephen's systems. Stephen liked to re-use the same password across multiple accounts, and he wasn't alone. Doubtless many of his websites' users did the same. With access to the database of usernames and their associated email addresses and passwords, attackers could abuse this habit to gain unauthorized access to the external email accounts of Stephen's users. With this access, users could potentially defraud those users further, stealing sensitive data, gaining access to other accounts and services (such as online banking), and even using their legitimate email accounts for phishing attacks.</p>
+<p>The possibilities were endless! And I made sure Stephen knew about them.</p>
+<h1 id="aftermath">Aftermath</h1>
+<p>After composing my email to Stephen, the adrenaline from my exploits had faded, and the reality of the situation began to set in. In my excitement and curiosity, I hadn't given much thought to the consequences of my actions. After writing about all the ways people might exploit Stephen's websites, I realized the risk I was taking, and considered whether to send the email or just wipe my tracks, deleting all evidence of my intrusion and pretending I'd never found the site.</p>
+<p>While the "wipe my tracks" option looked appealing, my decision was influenced by two core assumptions:</p>
+<ul>
+<li>Everyone is smarter than me.</li>
+<li>Second, I assume I'm never the first to discover anything.</li>
+</ul>
+<p>If I tried to cover my tracks, Stephen would find some logfile or other overlooked evidence of my intrusion. Even the act of covering one's tracks creates more tracks. Assuming that Stephen was smarter than me, I could not hope to hide my intrusion. I would be caught, one way or another.</p>
+<p>But what if I knew I wouldn't get caught? I could still walk away as if I had never found the site, right? This is where the 2nd assumption comes in. Having discovered these vulnerabilities in Stephen's websites, I had to assume that someone else had discovered them first. This presented an ethical dilemma: Could I ignore the vulnerabilities, knowing that someone else could already be abusing them?</p>
+<p>Consider the following (hypothetical) scenario: Say you're a tourist visiting the Eiffel Tower, and while leaning against the rail to snap a photo, you accidentally dislodge the railing. Looking at the damage, you realize that the rail could easily fall off, and if someone were to lean on it, they could potentially fall to their death.</p>
+<p>If you report the broken railing, you might be accused of causing the damage. But if you don't report the damage, someone could get hurt or die. Therefore, despite the personal risk, the only ethical option would be to report the faulty railing, so that it could be repaired, and nobody would get hurt.</p>
+<p>Likewise, despite the personal risk inherent in disclosure, I felt I could not ethically ignore the vulnerabilities in Stephen's websites, knowing that they could lead to great harm to Stephen and his users.</p>
+<h2 id="disclosure">Disclosure</h2>
+<p>My heart raced as I clicked "send" on the email. Shortly after, the bell rang for lunch. As I ate, I considered the very real possibility that I could be arrested for computer crimes. Despite my intentions, and my efforts to alert Stephen to the vulnerabilities in his systems, I could still go to jail. I had heard of minors being arrested and tried as adults. How would I survive incarceration? How would I explain this to my parents? My actions were indelible. The ball was in Stephen's court. All I could do was wait.</p>
+<p>Suffice to say, it was a very anxious lunch.</p>
+<p>Upon my return, I checked my inbox, and found an email from Stephen. He was, understandably, irate. He'd been having a pretty good day until I came along. Now he had a security incident on his hands, which could impact his reputation and his career. He felt endangered, and reacted defensively, threatening litigation against me.</p>
+<h2 id="remediation">Remediation</h2>
+<p>It appeared my worst fears were coming true. Still, I felt disclosure was the right course of action. </p>
+<p>I explained as much in my response, and offered my advice on how to fix the vulnerabilities and improve his code security. I also encouraged him to implement better password hygeine, both in his databases and with his personal accounts. Finally, I reminded him of a few important details which, I hoped, would dissuade legal recourse:</p>
+<ol>
+<li>I had taken no harmful actions on his system, and had not only disclosed the vulnerabilities, but provided solutions.</li>
+<li>As a minor, I would likely receive a lighter sentence than an adult in my position.</li>
+<li>At least one of the web-shops Stephen operated was for a business based in California.</li>
+</ol>
+<p><a href="https://oag.ca.gov/privacy/databreach/reporting">California law</a> requires businesses to notify users whose unencrypted personal information may have been acquired by an unauthorized person. If Stephen took me to court for unauthorized access, he'd force the businesses whose websites he hosted to disclose the breach to their customers. This would cause a pile of problems for Stephen and his business clients. The businesses would suffer financial losses, and Stephen would incur damage to his reputation and career.</p>
+<p>It seemed like a lot of unnecessary hassle, from my perspective, when instead Stephen could simply fix the bugs, change his passwords, and get on with his life.</p>
+<p>I was glad to see that he agreed. The last email he sent was brief, effectively saying "I'll drop it this time. Don't hack me again." Not long after—some time between <a href="https://web.archive.org/web/20031231072921/http://www.scriptsharks.com/">December 31, 2003</a> and <a href="https://web.archive.org/web/20040206040744/http://scriptsharks.com:80/">February 6, 2004</a>—Stephen restructured his website, taking down the insecure project-management service altogether, and rearranging existing articles and projects to fill the space.</p>
+<p>I never heard from him again, but I never forgot about Stephen, nor about ScriptSharks. My experience with him encouraged me to keep learning, keep hacking, and keep working to improve security for everyone. Though he never knew it, Stephen had a significant impact on my life.</p>
+<h1 id="retrospect">Retrospect</h1>
+<p>Over the years that followed, I checked in on ScriptSharks now and then. I watched as the site evolved, though activity dwindled. Stephen's last major revision to the site was around <a href="https://web.archive.org/web/20050129040945/http://scriptsharks.com:80/">December 3, 2004</a>, after which point he only updated the site a few times, usually to <a href="https://web.archive.org/web/20060117190400/http://www.scriptsharks.com:80/">update the copyright date</a>. In 2007, Stephen <a href="https://web.archive.org/web/20070810100213/http://www.scriptsharks.com:80/">stripped the news section from his site</a>.</p>
+<p>In <a href="https://web.archive.org/web/20110416232547/http://www.scriptsharks.com:80/">2011</a>, the site was host to some Japanese domain-parking page. In <a href="https://web.archive.org/web/20130619175625/http://www.scriptsharks.com/">2013</a> it appeared that ScriptSharks may make a comeback, but in <a href="https://web.archive.org/web/20160109235928/http://www.scriptsharks.com/">2016</a> the site went offline, never to return.</p>
+<p>Around that time, I was working as a long-haul trucker, making deliveries coast-to-coast. Despite my decades-long passion for coding and hacking, I had never considered myself good enough to "go pro." But in my down-time on the road, I connected with a group of hackers online, many of whom worked in the industry. After observing my skills, they urged me to pursue a career as a penetration tester. In 2019, I left trucking and obtained my <a href="https://www.offensive-security.com/pwk-oscp/">OSCP</a>. In 2020, I was hired as an entry-level security analyst.</p>
+<p>Before long, I was teaching new analysts about pentesting methods and techniques. Each time I taught a team about SQLi, I would tell them the story of ScriptSharks.com, and how Stephen and his website had inspired me. As analysts, my students had been taught "zero trust," and were encouraged to fact-check everything. My story was no exception.</p>
+<p>This is how, in 2021, I discovered that Stephen had passed away the previous year. One of my students, Googling for Stephen's name, found his <a href="https://obits.nola.com/us/obituaries/nola/name/stephen-lane-obituary?id=2273886">obituary</a> on a local news website. I was saddened at the news. While I had never known Stephen personally, I had thought about him often. It was odd, feeling such a connection with someone I barely knew.</p>
+<h1 id="rebirth">Rebirth</h1>
+<p>In 2022, thinking back on Stephen's passing, I wondered: Who owns ScriptSharks.com now? I assumed it would have been bought up right away, but I was wrong. When I looked, the domain was for sale!</p>
+<p>So I bought it. I didn't want it to fall in the hands of a domain-squatter with no appreciation for the site's history. I wanted to do something useful with it. Something that would respect the site's history, while taking it in a new direction.</p>
+<p>I took a page from Stephen's book. I decided to channel my passion for malware and security into ScriptSharks.com, sharing my knowledge and experience with the world, just as Stephen had done.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../FE%20Changelog/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../FE%20Changelog/" class="btn btn-xs btn-link">
+        Changelog
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../0x00%20History/03%20The%2090s/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../0x00%20History/03%20The%2090s/" class="btn btn-xs btn-link">
+        Polymorphs, Macros and RATs! (Oh My!)
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0xFF About/FD Origins.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>

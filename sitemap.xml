@@ -2,37 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://www.scriptsharks.com/</loc>
-         <lastmod>2022-08-10</lastmod>
+         <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/00%20Sipping%20from%20the%20Fire%20Hose/</loc>
-         <lastmod>2022-08-10</lastmod>
+         <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/01%20In%20the%20Beginning/</loc>
-         <lastmod>2022-08-10</lastmod>
+         <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/02%20Malware%20Explosion/</loc>
-         <lastmod>2022-08-10</lastmod>
+         <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/03%20The%2090s/</loc>
-         <lastmod>2022-08-10</lastmod>
+         <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.scriptsharks.com/0xFF%20About/00%20Changelog/</loc>
-         <lastmod>2022-08-10</lastmod>
+         <loc>https://www.scriptsharks.com/0xFF%20About/FD%20Origins/</loc>
+         <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.scriptsharks.com/0xFF%20About/01%20License/</loc>
-         <lastmod>2022-08-10</lastmod>
+         <loc>https://www.scriptsharks.com/0xFF%20About/FE%20Changelog/</loc>
+         <lastmod>2022-08-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.scriptsharks.com/0xFF%20About/FF%20License/</loc>
+         <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
