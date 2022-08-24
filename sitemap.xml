@@ -6,6 +6,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.scriptsharks.com/old%20news/</loc>
+         <lastmod>2022-08-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.scriptsharks.com/0x00%20History/00%20Sipping%20from%20the%20Fire%20Hose/</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
@@ -22,6 +27,11 @@
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/03%20The%2090s/</loc>
+         <lastmod>2022-08-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.scriptsharks.com/0x00%20History/04%20Millenial%20Malware/</loc>
          <lastmod>2022-08-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
