@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x00%20History/05%20Ransomware%20Rising/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Ransomware Rising - ScriptSharks</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Waledac Spam Attack", url: "#_top", children: [
+          ]},
+          {title: "Stuxnet", url: "#stuxnet", children: [
+          ]},
+          {title: "Some Other Stuff", url: "#some-other-stuff", children: [
+          ]},
+          {title: "The Prodigal Malware Returns", url: "#the-prodigal-malware-returns", children: [
+              {title: "The Problem", url: "#the-problem" },
+              {title: "The Solution", url: "#the-solution" },
+              {title: "When Opportunity Strikes...", url: "#when-opportunity-strikes" },
+          ]},
+          {title: "I Want Off This Ride", url: "#i-want-off-this-ride", children: [
+              {title: "Ransomware in the 2010s", url: "#ransomware-in-the-2010s" },
+          ]},
+          {title: "Looking Ahead", url: "#looking-ahead", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../0xFF%20About/FD%20Origins/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../0xFF%20About/FD%20Origins/" class="btn btn-xs btn-link">
+        ScriptSharks Origins
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../04%20Millenial%20Malware/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../04%20Millenial%20Malware/" class="btn btn-xs btn-link">
+        Millenial Malware
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <blockquote>
+<p>"Heck, what's a little extortion among friends?" ~<a href="https://en.wikipedia.org/wiki/Bill_Watterson">Bill Watterson</a></p>
+</blockquote>
+<h1 id="waledac-spam-attack">Waledac Spam Attack</h1>
+<p>To kick off the 2010s, researchers discovered the <a href="https://en.wikipedia.org/wiki/Waledac_botnet">Waledac botnet</a>, which had infected 70-90 thousand systems, sending over 1.5 billion spam emails per day before it was shut down.</p>
+<p>This sounds like a lot—and it is—but this only accounted for 1% of the total global spam volume at the time. Think about that. In 2010, there were 150 billion spam emails being sent every day. There were only 7 billion people on the planet at the time, and only <a href="https://www.itu.int/net/itunews/issues/2010/10/04.aspx">2 billion people online</a>, which means each user (on average) got about 27 thousand spam emails per year.</p>
+<p>That's about 104 spam emails each day, Monday through Friday, 52 weeks a year. Plus holidays.</p>
+<p>And each day, one of those emails came from Waledac.</p>
+<p>That's <em>so much spam.</em></p>
+<p><img alt="So much spam." src="/0x00 History/img/Spam.jpg" /></p>
+<p>Does anyone actually like spam emails? I don't. I've never heard someone say, "I'm so glad I got that spam email. It really brightened my day." It's not just annoying, it's wasteful; think of all the electricity and hardware and bandwidth being used for all that spam. It's almost as wasteful as <a href="https://news.climate.columbia.edu/2021/09/20/bitcoins-impacts-on-climate-and-the-environment/">cryptocurrency</a>—and nowhere near as interesting.</p>
+<p>I'm not sure why anyone would admit to being a spammer, let alone <a href="https://genius.com/Ytcracker-spammer-court-lyrics">rap about it</a>, but <a href="https://en.wikipedia.org/wiki/YTCracker">YTCracker</a> gets about 8.5 thousand listeners per month on <a href="https://open.spotify.com/artist/1x82Mu3wakMkldMW5kEiP4?si=KedqXObRS1yS5kqnTCg1eA">Spotify</a>. I guess there's a market for it.</p>
+<p>I digress.</p>
+<p>To take down Waledac, Microsoft worked with the U.S. government to <a href="https://www.helpnetsecurity.com/2010/02/26/microsoft-cripples-the-waledac-botnet/">take down 273 internet domains used by the botnet</a>. "At Microsoft," a spokesperson said, "we don't accept the idea that botnets are a fact of life." Unfortunately, the facts of life don't require Microsoft's acceptance; Waledac was not the first botnet, nor was it the only active botnet at the time. In fact, the world has been plagued by botnets non-stop <a href="https://en.wikipedia.org/wiki/Botnet#Historical_list_of_botnets">since the dawn of the 21st century</a>. The <a href="https://en.wikipedia.org/wiki/Bagle_(computer_worm)">Bagle</a> botnet from 2004 was <a href="https://web.archive.org/web/20160808014046/http://www.scmagazineuk.com/new-botnet-threats-emerge-in-the-new-year-from-lethic-and-bagle/article/160999/">still active in 2010</a>, and in 2022, at the time of this writing, users were still being infected by the <a href="https://en.wikipedia.org/wiki/ZeroAccess_botnet">ZeroAccess botnet</a> that was originally discovered in 2011—<em>eleven years prior.</em> And they're only getting bigger.</p>
+<p>Whether we accept it or not, botnets and spam are here to stay.</p>
+<h1 id="stuxnet">Stuxnet</h1>
+<p>In 2010, the <a href="https://en.wikipedia.org/wiki/Stuxnet">Stuxnet trojan</a> targeted Iranian nuclear facilities, becoming the first worm to attack <a href="https://en.wikipedia.org/wiki/SCADA">SCADA</a> systems. Researchers believe Stuxnet development began in 2005, and was part of a joint operation between the United States and Israel called "<a href="https://en.wikipedia.org/wiki/Operation_Olympic_Games">Operation Olympic Games</a>," though neither country has openly admitted involvement.</p>
+<p>The <a href="https://web.archive.org/web/20211114141544/https://www.newyorker.com/news/daily-comment/the-rewards-and-risks-of-cyber-war">New Yorker</a> called Stuxnet "the first formal offensive act of pure cyber sabotage by the United States against another country," though when president George W. Bush began the project in 2006, he believed it was the only way to prevent conventional attacks on Iranian nuclear facilities, achieving (<a href="https://web.archive.org/web/20220325214631/https://www.nytimes.com/2012/06/01/world/middleeast/obama-ordered-wave-of-cyberattacks-against-iran.html">per The New York Times</a>) "what until then could be accomplished only by bombing a country or sending in agents to plant explosives."</p>
+<p>Despite their best efforts to avoid collateral damage, the Stuxnet developers made an error, which allowed the worm to spread to computers beyond the scope of the original mission. This was how the worm became exposed to the public, after which researchers at Symantec and Kaspersky Lab examined the worm and revealed its secrets to the world.</p>
+<p>Stuxnet included rootkit functionality, employed zero-day exploits, and was digitally signed with legitimate certificates stolen from Realtek and JMicron, enabling it to masquerade as legitimate software from trusted vendors. Most importantly, it proved that malicious software could cause real, physical damage. (More on this later.)</p>
+<h1 id="some-other-stuff">Some Other Stuff</h1>
+<p>I know you're itching to get to the ransomware, but first I should cover some other stuff that happened in the 2010s.</p>
+<ul>
+<li>2010<ul>
+<li><a href="https://en.wikipedia.org/wiki/Psyb0t">Psyb0t worm</a> infected routers and modems.</li>
+</ul>
+</li>
+<li>2011<ul>
+<li><a href="https://en.wikipedia.org/wiki/Duqu">Duqu worm</a>, possibly related to Stuxnet, attempted to infect and gather information from industrial control systems.</li>
+</ul>
+</li>
+<li>2012<ul>
+<li><a href="https://en.wikipedia.org/wiki/Flame_(malware)">Flame</a> continued the trend of malware used for cyber espionage, targeting Middle-Eastern government and educational institutions, as well as specific individuals.</li>
+<li><a href="https://en.wikipedia.org/wiki/Shamoon">Shamoon</a> was a destructive malware which targeted national oil companies, deemed "the biggest hack in history" by <a href="https://money.cnn.com/2015/08/05/technology/aramco-hack/index.html">CNN</a>.</li>
+</ul>
+</li>
+<li>2013<ul>
+<li><a href="https://en.wikipedia.org/wiki/Gameover_ZeuS">Gameover ZeuS</a> was a banking trojan and keylogger, stealing credentials to online banking accounts.</li>
+</ul>
+</li>
+<li>2014<ul>
+<li><a href="https://en.wikipedia.org/wiki/Regin_(malware)">Regin</a>, a <a href="https://en.wikipedia.org/wiki/Dropper_(malware)">dropper malware</a>, was used by the NSA and GCHQ to spy on European governments, mostly in Russia and Saudi Arabia.</li>
+</ul>
+</li>
+<li>2016<ul>
+<li>The <a href="https://en.wikipedia.org/wiki/MEMZ">MEMZ</a> trojan, designed as a prank for a <a href="https://www.youtube.com/watch?v=I-jdSgjtUPk">YouTube video series</a> featuring "Viewer-Made Malware," caused infected systems to become unusable, requiring a complete reinstallation of Windows.</li>
+<li><a href="https://en.wikipedia.org/wiki/Tiny_Banker_Trojan">Tiny Banker</a> was another banking trojan, designed to steal credentials for over two dozen financial websites.</li>
+<li>The <a href="https://en.wikipedia.org/wiki/Mirai_(malware)">Mirai Botnet</a> infected IoT devices worldwide, using infected devices to launch large-scale DDoS attacks against high-profile targets. The botnet inspired American musician <a href="https://en.wikipedia.org/wiki/James_Ferraro">James Ferraro</a> to write an <a href="https://en.wikipedia.org/wiki/Four_Pieces_for_Mirai_(Overture)">extended play where the Mirai botnet is humanity's savior</a>.</li>
+</ul>
+</li>
+<li>2017<ul>
+<li>In April, the <a href="https://en.wikipedia.org/wiki/Shadow_Brokers">Shadow Brokers</a> released a trove of stolen NSA exploits, including <a href="https://en.wikipedia.org/wiki/EternalBlue">EternalBlue</a>, which became hugely popular with malware authors, as it provided an easy (and wormable) infection vector for Windows systems.</li>
+</ul>
+</li>
+<li>2019<ul>
+<li>The <a href="https://en.wikipedia.org/wiki/Titanium_(malware)">Titanium Backdoor</a> was discovered, written by the <a href="https://en.wikipedia.org/wiki/PLATINUM_(cybercrime_group)">PLATINUM APT</a>. It employed a complex infection sequence, including hiding data in PNG images with steganography.</li>
+</ul>
+</li>
+</ul>
+<h1 id="the-prodigal-malware-returns">The Prodigal Malware Returns</h1>
+<p>Remember Dr. Popp's <a href="/0x00 History/02 Malware Explosion/#the-infection-spreads">AIDS trojan</a> from back in '89? It was the world's first ransomware, yet it didn't even encrypt users' files! It just scrambled the directory structure. What a laugh! And the author expected victims to mail ransom checks to a P.O. box in Panama! As if the authorities couldn't just watch that mailbox and arrest whoever collected the money. What a silly idea, right?</p>
+<p>Well, not exactly.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>While Dr. Popp's malware had its flaws, the most grievous among them was its poor timing. You see, Dr. Popp was a couple decades too early. He wasn't alone, either; in the years following, there were a handful of other ransomware attacks, but few were very successful. Setting aside careless design flaws, such as reusing the same hard-coded encryption password across every single infected host (I'm looking at you, <a href="https://en.wikipedia.org/wiki/Archiveus">Archiveus</a>), all ransomware had one common problem: currency exchange. For example, <a href="https://en.wikipedia.org/wiki/PGPCoder">PGPCoder</a> (released in 2006) depended on <a href="https://en.wikipedia.org/wiki/E-gold">e-gold</a> and <a href="https://en.wikipedia.org/wiki/Liberty_Reserve">Liberty Reserve</a>, and Archiveus required victims to purchase specific items from designated third-party websites. Each had their problems:</p>
+<ul>
+<li>E-gold was known to <a href="http://www.smartdevicecentral.com/article/Egold+Tracks+Cisco+Code+Thief/138637_1.aspx">report criminal activity to the authorities</a>, which made it a poor choice for criminals. Yet by 2007, the service had a reputation for catering to international terrorists and child pornographers, and were <a href="https://www.nydailynews.com/news/crime/feds-bust-24-karat-web-worry-article-1.219589">shut down by the feds</a>.</li>
+<li>Liberty Reserve began in 2006, the same year its founder was charged with violating New York State banking laws with his previous digital currency venture, <a href="https://en.wikipedia.org/wiki/Gold_Age">Gold Age</a>. After fleeing the United States to settle in Costa Rica, he founded Liberty Reserve, which operated without a license and was shut down by government officials in 2013.</li>
+<li>Third-party marketplaces like Amazon and Ebay are regularly abused by criminals for credit fraud and money laundering schemes, but they have strong anti-fraud departments that work with law enforcement agencies. This type of fraud is complicated by the fact that merchant accounts are tied to specific individuals, businesses and/or financial institutions, making criminal anonymity challenging.</li>
+</ul>
+<p>Without a secure, anonymous means of currency exchange, ransomware was unsustainable.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>In 2008, an unknown author, going by the pseudonym <a href="https://en.wikipedia.org/wiki/Satoshi_Nakamoto">Satoshi Nakamoto</a>, published a paper titled <em>Bitcoin: A Peer-to-Peer Electronic Cash System</em>. In it, he described a new digital currency that would be free from the control of governments and banks. He also described a peer-to-peer network that would allow users to send and receive payments without the need for a trusted third party. The paper was published on a cryptography mailing list, and was met with skepticism. But the idea caught on, and in 2009, the first Bitcoin transaction was made. At the time, few realized the implications of this new technology. In early 2013, a single Bitcoin was worth about $13. By year's end, the value had increased nearly 100 times, peaking at $1,100. What caused this sudden spike in value?</p>
+<p>One word: Crime.</p>
+<ul>
+<li>The Silk Road, launched in 2011, became the largest online marketplace for illegal products and services worldwide. It was also the first major marketplace to accept Bitcoin as payment.</li>
+<li>In October 2013, as the site was reaching critical mass, the FBI shut it down and arrested its founder, Ross Ulbricht, seizing 144,000 Bitcoins, worth about $28 million at the time. As the Silk Road bust made headlines, numerous copycat marketplaces popped up, and Bitcoin's popularity exploded.</li>
+<li>At the start of November, the value of one Bitcoin was around $200. On November 18, <a href="https://www.bbc.com/news/technology-24986264">the U.S. Senate Committee declared Bitcoin a legitimate currency</a>, and the value <a href="https://www.in2013dollars.com/bitcoin-price-in-2013">jumped to over $1,000</a> by the end of the month.</li>
+</ul>
+<p>The world finally had a decentralized, anonymous digital currency that was widely accepted as legitimate and free from government control. It was the perfect solution for ransomware.</p>
+<h2 id="when-opportunity-strikes">When Opportunity Strikes...</h2>
+<p>Unlike Dr. Popp, the authors of <a href="https://en.wikipedia.org/wiki/CryptoLocker">CryptoLocker</a>—the world's first truly successful ransomware—had impeccable timing. They began their attack in September 2013, infecting systems, encrypting files, and demanding payment for decryption. Unlike their predecessors, CryptoLocker accepted payments in Bitcoin, capitalizing on the currency's newfound popularity. While the value of the ransoms remained somewhat steady (around USD$400), the dramatic rise in Bitcoin's value magnified CryptoLocker's profits. In October, the $400 ransom payment came out to about 2 Bitcoins. By year-end, those two Bitcoins were worth about $2,000.</p>
+<p>By the time CryptoLocker was shut down in 2014, it was estimated to have collected nearly 42 thousand Bitcoins, worth about $27 million at the time. (In 2022, that same amount of Bitcoin would be worth nearly $1 billion.) The extortion cost victims about USD$3 million, but Bitcoin's rise magnified that profit by a factor of 9.</p>
+<p>As of the time of this writing, only one person has been charged with CryptoLocker's creation, and he still hasn't been arrested. The FBI has <a href="https://www.fbi.gov/wanted/cyber/evgeniy-mikhailovich-bogachev">offered a $3 million reward</a> for information leading to his arrest.</p>
+<h1 id="i-want-off-this-ride">I Want Off This Ride</h1>
+<p>CryptoLocker was just the beginning. Following its success, countless new ransomware variants have sprung up. In 2016, Symantec declared ransomware <a href="https://www.firstpost.com/tech/news-analysis/symantec-classifies-ransomware-as-the-most-dangerous-cyber-threat-3689089.html">"the most dangerous cyber threat"</a> for both organizations and individuals. Where CryptoLocker demanded ransoms of only $400, the median ransom payment in the second quarter of 2022 was USD$36,000—nearly 90 times greater.</p>
+<p>But the cost of ransomware isn't merely financial. In 2017, the "WannaCry" ransomware forced British doctors to cancel surgeries and turn patients away. A month later, "NotPetya"—which claimed to be ransomware, but was actually a wiper—caused hospitals in Virginia and Pennsylvania to turn away patients whose records they could not access.</p>
+<p>In 2019, 794 healthcare providers in the U.S. alone were infected with ransomware. According to <a href="https://www.nytimes.com/2020/09/18/world/europe/cyber-attack-germany-ransomeware-death.html">reports</a>, "emergency patients were turned away from hospitals, medical records were inaccessible and in some cases permanently lost, surgical procedures were canceled, tests [were] postponed and 911 services [were] interrupted." In Germany, after being hit by a ransomware attack, a hospital re-routed an emergency patient to another hospital 20 miles away. The patient died on the way. Authorities later determined that <a href="https://www.technologyreview.com/2020/11/12/1012015/ransomware-did-not-kill-a-german-hospital-patient/">the ransomware wasn't to blame</a>.</p>
+<p>However, earlier that year, a similar ransomware attack hit a hospital in Alabama. Vital systems were taken offline, including important medical devices. A week later, a woman went to the hospital to deliver her baby, and the hospital admitted her, despite having not yet recovered from the attack. With their systems offline, medical teams could not monitor vital signs effectively. As a result, they missed a preventable complication that <a href="https://futurism.com/neoscope/hackers-hospital-allegedly-killed-newborn-baby">led to the death of the baby</a>.</p>
+<p>Now, granted, the hospital should have <em>at least</em> informed the patient of their compromised systems before admitting her, so she could have chosen to go elsewhere. But the fact remains that, had it not been for the ransomware attack, the baby would likely have survived.</p>
+<p>Following the news, in 2020, a slew of ransomware groups claimed that they would <a href="https://www.virsec.com/blog/maze-and-other-ransomware-groups-say-they-wont-attack-hospitals-during-covid19-outbreak-but-how-trustworthy-is-their-word">no longer attack hospitals</a>. This was welcome news, especially in light of the emerging Covid pandemic, which was already overwhelming hospitals worldwide. Yet by year-end, <a href="https://www.thomsonreuters.com/en-us/posts/investigation-fraud-and-risk/ransomware-attacks-against-healthcare/">34% of healthcare organizations were hit by ransomware, rising to 66% in 2021</a>. Considering that among all organizations hit by ransomware, <a href="https://news.sophos.com/en-us/2022/06/01/the-state-of-ransomware-in-healthcare-2022/">those in the healthcare industry are the most likely to pay the ransom</a>, it's likely that this number will continue to rise.</p>
+<h2 id="ransomware-in-the-2010s">Ransomware in the 2010s</h2>
+<p>Here's a quick rundown of the <a href="https://en.wikipedia.org/wiki/Ransomware#History">notable ransomware attacks</a> that happened during the 2010s:</p>
+<ul>
+<li>2012<ul>
+<li>Reveton spread throughout systems in Europe, the U.S. and Canada, typically locking down systems with messages claiming to be from law enforcement agencies tasked with fighting piracy and child pornography, demanding payment for the release of the system.</li>
+</ul>
+</li>
+<li>2013<ul>
+<li>CryptoLocker was the first ransomware to accept Bitcoin payments, contributing heavily to its success.</li>
+</ul>
+</li>
+<li>2014<ul>
+<li>CryptoLocker.F and <a href="https://en.wikipedia.org/wiki/TorrentLocker">TorrentLocker</a> were released, initially targeting Australian users, though they quickly spread worldwide.</li>
+<li>CryptoWall not only encrypted files, but also deleted backups, making it impossible to recover without paying the ransom. In addition, it installed spyware which stole passwords and Bitcoin wallets, causing estimated losses around USD$18 million by mid-2015.</li>
+</ul>
+</li>
+<li>2015<ul>
+<li>Mobile ransomware Fusob was released, targeting Android devices. It posed as a pornographic video player, then poses as an accusatory authority, threatening fictitions charges if the ransom isn't paid.</li>
+</ul>
+</li>
+<li>2016<ul>
+<li><a href="https://en.wikipedia.org/wiki/Petya_(malware)">Petya</a> was released, infecting the <a href="https://en.wikipedia.org/wiki/Master_boot_record">master boot record</a> of affected systems. It did not spread very far, but became the foundation for future attacks.</li>
+<li><a href="https://threatpost.com/meet-the-cryptoworm-the-future-of-ransomware/117330/">SamSam</a> was the first wormable ransomware (or "ransomworm"), targeting JBoss servers and brute-forcing weak RDP passwords.</li>
+<li><a href="https://usa.kaspersky.com/blog/zcryptor-ransomware/7240/">ZCryptor</a> was yet another ransomworm, encrypting users' files before infecting external storage and flash drives.</li>
+<li><a href="https://www.trendmicro.com/vinfo/de/security/news/cybercrime-and-digital-threats/new-stampado-ransomware-sold-cheap-on-the-dark-web">Stampado</a> was a ransomware-as-a-service (RaaS) that was sold on the dark web for as little as USD$39 for a lifetime license. While not the first RaaS, it was definitely the cheapest.</li>
+</ul>
+</li>
+<li>2017<ul>
+<li>With the help of the EternalBlue exploit (mentioned previously), the <a href="https://en.wikipedia.org/wiki/WannaCry_ransomware_attack">WannaCry</a> ransomware spread worldwide, infecting over 230,000 systems in 150 countries. While it wasn't the first ransomware to use a worm-like propagation method, it was the first to spread on such a massive scale.</li>
+<li><a href="https://en.wikipedia.org/wiki/NotPetya">NotPetya</a> was released, infecting systems in Ukraine, Russia, and other Eastern European countries. Despite being derived from Petya, it was not actually ransomware, but a wiper, designed to destroy data. Like WannaCry, it spread using EternalBlue.</li>
+<li>BadRabbit, following on the heels of its predecessors, affected systems in a similar manner to Petya and WannaCry, encrypting file tables. It did not use EternalBlue, instead attempting to spread via fake Adobe Flash updates, and was halted within a few days of its discovery.</li>
+<li><a href="https://en.wikipedia.org/wiki/Syskey">Syskey</a> was <a href="https://docs.microsoft.com/en-US/troubleshoot/windows-server/identity/syskey-exe-utility-is-no-longer-supported">removed from Windows 10 and Windows Server 2017</a> after being used in ransomware attacks. The utility, added to Windows NT in 2001, was designed by Microsoft to protect systems and sensitive data by encrypting the SAM database. Attackers posed as remote tech support, then locked victims out of their systems, demanding ransoms for passwords.<ul>
+<li>This proved that even legitimate software can sometimes be malware.</li>
+<li>It took about six years after <a href="https://www.adobe.com/products/flashplayer/end-of-life.html">attacks were reported</a> for Microsoft to officially drop <code>Syskey</code>.</li>
+<li>In comparison, Adobe didn't officially terminate Flash until the first day of 2021, <a href="https://docs.microsoft.com/en-us/security-updates/securitybulletins/2006/ms06-069">despite</a> <a href="https://nvd.nist.gov/vuln/detail/CVE-2007-3456">nearly</a> <a href="https://isc.sans.edu/diary/A+little+vunerable+%27flash+from+the+past%27+ala+MS-XP-SP3/4513">two</a> <a href="https://isc.sans.edu/diary/YA0D+%28Yet+Another+0-Day%29+in+Adobe+Flash+player/6847">decades</a> <a href="https://nvd.nist.gov/vuln/detail/CVE-2010-1297">of</a> <a href="https://www.computerworld.com/article/2507619/rsa-hackers-exploited-flash-zero-day-bug.html">constant</a> <a href="https://nvd.nist.gov/vuln/detail/CVE-2012-0779">abuse</a> <a href="https://nvd.nist.gov/vuln/detail/CVE-2013-0633">and</a> <a href="https://nvd.nist.gov/vuln/detail/CVE-2014-0515">vulnerabilities</a> <a href="https://www.recordedfuture.com/top-vulnerabilities-2015">that</a> <a href="https://www.computerworld.com/article/3073560/a-recently-patched-flash-player-exploit-is-being-used-in-widespread-attacks.html">just</a> <a href="https://www.proofpoint.com/us/threat-insight/post/apt28-racing-exploit-cve-2017-11292-flash-vulnerability-patches-are-deployed">refused</a> <a href="https://blog.morphisec.com/flash-exploit-cve-2018-4878-spotted-in-the-wild-massive-malspam-campaign">to</a> <a href="https://www.malwarebytes.com/blog/news/2019/05/exploit-kits-spring-2019-review">go</a> <a href="https://nvd.nist.gov/vuln/detail/CVE-2020-9746">away</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2018<ul>
+<li><a href="https://www.knowbe4.com/gandcrab-ransomware">GandCrab</a> arrived, then was raided after two months. The group persisted, retiring in July 2019 (<a href="https://malwiki.org/index.php?title=GandCrab">though their ransomware continued to propagate until at least November</a>).</li>
+</ul>
+</li>
+<li>2019<ul>
+<li><a href="https://en.wikipedia.org/wiki/REvil">REvil</a> (a.k.a. <a href="https://malwiki.org/index.php?title=Sodinokibi">Sodinokibi</a>) formed, quickly becoming one of the major players in the ransomware-as-a-service market. Turns out, they were <a href="https://www.bbc.com/news/technology-59215167">GandCrab all along</a>.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Sneaky GandCrab." src="/0x00 History/img/REvil.jpg" /></p>
+<p><em>You're not fooling anyone, GandCrab.</em></p>
+<h1 id="looking-ahead">Looking Ahead</h1>
+<p>In the early days, malware was fairly simple, and could be arranged into tidy taxonomies. (This one is a trojan; that one is a worm.) Today, however, malware has become more complex, and its shapes have shifted. What were previously considered separate categories of malware are now more like characteristics, flavors that can be mixed and matched in different combinations to achieve different results. A single attack may involve numerous smaller stages, each with its own purpose and payload. A single piece of malware may be able to perform multiple functions, and may alter its code to adapt to its environment.</p>
+<p>For example, the news may report a ransomware attack, but the ransomware is only one part of the attack chain; an initial stager may be attached to spam emails sent by a botnet of hosts infected with remote-access trojans. The stager may act as a dropper, downloading a modular "implant" that can be configured to perform a variety of tasks, including installing additional malware, stealing data, expanding the botnet, or even launching a distributed denial-of-service (DDoS) attack. The implant may then download the actual ransomware payload, which could also double as a wiper if necessary. Weeks later, someone might drop a 0-day, and the authors may create a new implant module, enabling it to spread as a worm. And so on.</p>
+<p>Malware is a constantly-evolving, ever-changing beast. Survival depends on our knowledge of the past, awareness of the present, and anticipation of the future. We must study, stay vigilant, be prepared.</p>
+<p><a href="https://www.cybereason.com/blog/three-reasons-why-you-should-never-pay-ransomware-attackers">And never, ever pay the ransom.</a></p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../0xFF%20About/FD%20Origins/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../0xFF%20About/FD%20Origins/" class="btn btn-xs btn-link">
+        ScriptSharks Origins
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../04%20Millenial%20Malware/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../04%20Millenial%20Malware/" class="btn btn-xs btn-link">
+        Millenial Malware
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x00 History/05 Ransomware Rising.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>
