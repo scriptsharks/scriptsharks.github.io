@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x20%20Analysis/00%20Introduction/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Know the Enemy - ScriptSharks</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "The Flip-Side", url: "#_top", children: [
+          ]},
+          {title: "Primary Objectives", url: "#primary-objectives", children: [
+          ]},
+          {title: "Keeping it Safe", url: "#keeping-it-safe", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../File%20Forensics/Emails/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../File%20Forensics/Emails/" class="btn btn-xs btn-link">
+        Emails
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../0x10%20Design/01%20Overview/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../0x10%20Design/01%20Overview/" class="btn btn-xs btn-link">
+        Malware Design Overview
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <blockquote>
+<p>"If you know the enemy and know yourself, you need not fear the result of a hundred battles." ~Sun Tzu, <em>The Art of War</em></p>
+</blockquote>
+<h1 id="the-flip-side">The Flip-Side</h1>
+<p>As mentioned in the <a href="/0x10 Design/00 Introduction/">Design Section</a>, malware researchers and malware authors are two sides of the same coin. In this section, we'll explore the analytic methods, techniques and tools used to examine and understand malware samples, and how to perform such analysis safely. As before, this section is not a tutorial, but a reference. There is no single, "correct" way to analyze malware, and the techniques described here are only a subset of those available. I will expand this section over time, and I hope you will contribute, too!</p>
+<h1 id="primary-objectives">Primary Objectives</h1>
+<p>When analyzing malware, there are a few primary objectives you'll aim to achieve:</p>
+<ul>
+<li>Identify the source of the attack. (This is known as "Attribution.")</li>
+<li>Determine the attacker's specific goals.</li>
+<li>Enumerate the steps the attacker took to achieve their goals.</li>
+<li>Document the malware's capabilities and damage potential.</li>
+<li>Design detections and countermeasures to prevent future attacks.</li>
+</ul>
+<p>Attackers will do everything in their power to thwart analysis—from obfuscating code to impede analysis, to employing the tactics of other well-known threat actors to muddle attribution. As a result, the analysis process can be difficult and time-consuming. In some cases, full-scale analysis can take weeks or months, with inconclusive results.</p>
+<p>The threat landscape evolves at a rapid pace; rather than attempting to perform a full analysis of every new sample, it is better to triage, prioritize, and analyze samples according to their potential impact, postponing lower-priority samples for later analysis.</p>
+<h1 id="keeping-it-safe">Keeping it Safe</h1>
+<p>Malware analysis is a dangerous business. Malware authors are constantly developing new techniques, not only to thwart analysis, but in some cases, to <a href="https://blog.google/threat-analysis-group/new-campaign-targeting-security-researchers/">damage or infect researchers' systems</a>. It is essential to protect your analysis environment from data loss and infection. The following steps will help you keep your analysis environment safe:</p>
+<ul>
+<li>Maintain a dedicated analysis environment. Do not perform analysis on your production networks and systems. If you must perform analysis in production, ensure that you have clean backups, and if possible, isolate the system from the network to prevent lateral movement.</li>
+<li>Use virtual machines. Virtual machines are a great way to isolate your analysis environment. Ensure that you have a clean snapshot of the VM before you begin analysis, so that you can restore it quickly. If possible, use a disposable VM, such as Google's <a href="https://cloud.google.com/spot-vms">Spot VMs</a>.</li>
+<li>Keep regular, redundant backups of essential data, such as analysis notes and samples. Test backups to ensure they work as expected.</li>
+<li>When interacting with attacker-owned C2 servers, use VPNs or disposable network interfaces. Do not use production networks and interfaces, which could reveal your identity to the attacker.</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../File%20Forensics/Emails/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../File%20Forensics/Emails/" class="btn btn-xs btn-link">
+        Emails
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../0x10%20Design/01%20Overview/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../0x10%20Design/01%20Overview/" class="btn btn-xs btn-link">
+        Malware Design Overview
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x20 Analysis/00 Introduction.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>

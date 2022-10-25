@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x30%20Resources/Software/Virtual%20Machines/02%20Guest%20OSes/">
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Guest OSes - ScriptSharks</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "The Tyranny of Choice", url: "#_top", children: [
+              {title: "Malware Development", url: "#malware-development" },
+              {title: "Malware Analysis", url: "#malware-analysis" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../../0xFF%20About/FC%20Old%20News/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../../0xFF%20About/FC%20Old%20News/" class="btn btn-xs btn-link">
+        Old News
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../01%20Hypervisors/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../01%20Hypervisors/" class="btn btn-xs btn-link">
+        Hypervisors 101
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="the-tyranny-of-choice">The Tyranny of Choice</h1>
+<p>When it comes to guest OSes, there are a lot of options. However, for the purposes of malware development and analysis, you'll want (at a minimum) a Windows and a Linux guest VM; preferably more than one of each.</p>
+<h2 id="malware-development">Malware Development</h2>
+<p>For creating malware, you'll want a fully-featured development environment, with support for multiple programming languages and a solid IDE. Thankfully, there are some excellent pre-made solutions for this purpose:</p>
+<ul>
+<li><a href="https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/">Windows 11 Development Environment</a><ul>
+<li>A fully-featured development environment for Windows 11, including Visual Studio 2022 and a full suite of tools and languages.</li>
+<li>This VM is <em>huge</em>, but comes with everything you need to get started with Windows development.</li>
+<li>The VM expires after 90 days, but can be re-downloaded.</li>
+</ul>
+</li>
+<li><a href="https://pop.system76.com/">Pop!_OS</a><ul>
+<li>A Linux distribution based on Ubuntu, aimed at software developers.</li>
+<li>Well-suited for a variety of languages, including C, C++, Python, and Go.</li>
+</ul>
+</li>
+<li><a href="https://www.kali.org/">Kali Linux</a><ul>
+<li>A Linux distribution based on Debian, aimed at penetration testers.</li>
+<li>Includes tools for generating shellcode and other malware payloads.</li>
+</ul>
+</li>
+<li><a href="https://www.parrotsec.org/">Parrot Security OS</a><ul>
+<li>A Linux distribution based on Debian, aimed at penetration testers and security professionals.</li>
+<li>Includes custom-tailored editions for developers, penetration testers, and more.</li>
+</ul>
+</li>
+</ul>
+<p>At a minimum, you'll want at least one Windows development VM and one Linux VM, with the ability to create shellcodes and other malware implants. For this purpose, <code>Parrot OS</code> is a solid choice, though <code>Kali</code> and <code>Pop!</code> are also good options.</p>
+<h2 id="malware-analysis">Malware Analysis</h2>
+<p>For running and analyzing malware, you'll want a separate VM from your development systems. This is to prevent any accidental damage to your development environment, and to ensure that your malware analysis environment is as clean as possible. For this purpose, you'll want a VM that is as close to a "vanilla" installation as possible, with few modifications. This will help ensure that any changes to the system are caused by the malware, and not by the analyst. The following are some excellent options for analysis guest VMs:</p>
+<ul>
+<li><a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/">Windows Testing VMs</a><ul>
+<li>A collection of Windows VMs, including Windows 7, Windows 8.1, and Windows 10, with Internet Explorer or Edge browsers pre-installed.</li>
+<li>These VMs contain very little additional software, and are very close to a "vanilla" installation.</li>
+<li>They expire after 90 days, but can be re-activated or rolled back to a clean, "un-registered" state.</li>
+<li>For testing on Windows 11, it may be necessary to use the <a href="https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/">Windows 11 Development Environment</a> VM, as the Windows 11 Testing VMs are not yet available.</li>
+</ul>
+</li>
+<li><a href="https://remnux.org/">Remnux</a><ul>
+<li>An open-source and free Linux-based toolkit specifically designed for malware analysts.</li>
+<li>Contains an extensive suite of malware analysis and reverse-engineering tools.</li>
+</ul>
+</li>
+<li><a href="https://github.com/mandiant/flare-vm">Flare VM</a><ul>
+<li>While technically not a full VM in its own right (due to Windows license restrictions), Flare VM is a set of scripts that install and configure a full suite of analysis and reversing tools for Windows.</li>
+<li>This is a great option for analysts who already have a Windows VM, but want to add a full suite of analysis tools.</li>
+<li>Alternatively, one could download and install each tool individually, but this is a time-consuming process.</li>
+</ul>
+</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../../0xFF%20About/FC%20Old%20News/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../../0xFF%20About/FC%20Old%20News/" class="btn btn-xs btn-link">
+        Old News
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../01%20Hypervisors/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../01%20Hypervisors/" class="btn btn-xs btn-link">
+        Hypervisors 101
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x30 Resources/Software/Virtual Machines/02 Guest OSes.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>

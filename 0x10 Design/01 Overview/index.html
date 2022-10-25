@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x10%20Design/01%20Overview/">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Malware Design Overview - ScriptSharks</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Steal Everything", url: "#_top", children: [
+          ]},
+          {title: "Know Your Kill Chain", url: "#know-your-kill-chain", children: [
+              {title: "Martin and Mitre", url: "#martin-and-mitre" },
+              {title: "Breaking it Down", url: "#breaking-it-down" },
+              {title: "Stagers, Payloads and Modules", url: "#stagers-payloads-and-modules" },
+          ]},
+          {title: "Don\u0027t Infect Yourself", url: "#dont-infect-yourself", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script>
+      <script src="../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../0x20%20Analysis/00%20Introduction/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../0x20%20Analysis/00%20Introduction/" class="btn btn-xs btn-link">
+        Know the Enemy
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../00%20Introduction/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../00%20Introduction/" class="btn btn-xs btn-link">
+        Let's Write Some Malware!
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <blockquote>
+<p>"Good writers borrow, great writers steal." ~T.S. Eliot</p>
+</blockquote>
+<h1 id="steal-everything">Steal Everything</h1>
+<p>Want to create effective malware quickly? Steal code from other malware! This is a common practice among malware authors, for many good reasons:</p>
+<ul>
+<li>You can focus on the interesting parts of your codebase, rather than implementing everything from scratch.</li>
+<li>You can learn a great deal from reading other people's code, which will make you a better malware author.</li>
+<li>Identification and attribution become more difficult when a sample includes code from multiple sources.</li>
+<li>Your malware can gain new abilities by splicing in other malware's code, like a Frankensteinian abomination.</li>
+</ul>
+<p>I'll add one caveat: If you're going to publish or sell your malware or its source code, please don't steal from commercial, legitimate "malware" products like Cobalt Strike. And if you use code from open-source projects, please give credit where credit is due. Criminal malware authors regularly steal without attribution, but that doesn't make it right; if you steal code from a criminal malware sample, then discover it was originally stolen from a legitimate project, be sure to give credit to the original author and, if necessary, remove or rewrite the offending code.</p>
+<p><img alt="You're not, right?" src="/0x10 Design/img/hmmm.png" /></p>
+<h1 id="know-your-kill-chain">Know Your Kill Chain</h1>
+<p>In the early days, malware was relatively simple, involving just one or two stages in a single executable. Today, malware is more complex, often involving multiple modular stages, each with its own unique purpose. The stages can be chained together, each performing a specific task in support of the attacker's objectives. This design has arisen to support the attacker's "kill chain," a series of actions aimed at achieving specific goals.</p>
+<h2 id="martin-and-mitre">Martin and Mitre</h2>
+<p>The "kill chain" was originally a <a href="https://en.wikipedia.org/wiki/Kill_chain">military concept</a> describing the structure of an attack. The "cyber kill chain," a derivative concept developed by Lockheed Martin, describes the steps required to achieve a cyber objective, such as stealing data, installing a backdoor, or launching a denial-of-service attack. Multiple alternative models have been devised, including the <a href="https://attack.mitre.org/">MITRE ATT&amp;CK framework</a>, a community-driven project highly regarded throughout the security industry. The ATT&amp;CK framework includes the following stages:</p>
+<ol>
+<li>Reconnaissance</li>
+<li>Resource Development</li>
+<li>Initial Access</li>
+<li>Execution</li>
+<li>Persistence</li>
+<li>Privilege Escalation</li>
+<li>Defense Evasion</li>
+<li>Credential Access</li>
+<li>Discovery</li>
+<li>Lateral Movement</li>
+<li>Collection</li>
+<li>Command and Control</li>
+<li>Exfiltration</li>
+<li>Impact</li>
+</ol>
+<p>Each stage is broken down further into tactics and techniques. For example, the "Initial Access" stage includes the following tactics, each with their related techniques:</p>
+<ul>
+<li>Drive-By Compromise</li>
+<li>Exploit Public-Facing Application</li>
+<li>External Remote Services</li>
+<li>Hardware Additions</li>
+<li>Phishing</li>
+<li>Replication Through Removable Media</li>
+<li>Supply Chain Compromise</li>
+<li>Trusted Relationship</li>
+<li>Valid Accounts</li>
+</ul>
+<h2 id="breaking-it-down">Breaking it Down</h2>
+<p>It is foolish to attempt to cover every posible stage, tactic and technique in a single malware payload. Instead, most malware authors focus on specific stages and techniques, deploying multiple payloads to achieve their goals. For example, a ransomware attack may employ the following techniques:</p>
+<ol>
+<li>Reconnaissance<ul>
+<li>Identify the target's organizational structure, including the names of key personnel.</li>
+<li>Gather email addresses for key personnel and related individuals.</li>
+</ul>
+</li>
+<li>Resource Development<ul>
+<li>Create or obtain malware samples.</li>
+<li>Stage malware on remote servers with deceptive domain names.</li>
+</ul>
+</li>
+<li>Initial Access<ul>
+<li>Send phishing emails with malicious links or attachments.</li>
+<li>Links and attachments aim to launch stager code.</li>
+</ul>
+</li>
+<li>Execution<ul>
+<li>Stager code downloads and executes the main payload.</li>
+</ul>
+</li>
+</ol>
+<p>Once the main payload is executed, it will typically deploy a command-and-control module, which will then use additional modules to handle persistence, privilege escalation, lateral movement, etc. This is a common design pattern, employed by countless malware families. In the case of ransomware, the malware will typically deploy data exfiltration and encryption modules, designed to steal and encrypt the victim's data.</p>
+<h2 id="stagers-payloads-and-modules">Stagers, Payloads and Modules</h2>
+<p>Modern malware is typically divided into three distinct components:</p>
+<ul>
+<li>Stagers: Small, lightweight code designed to download and execute the main payload.</li>
+<li>Payloads: Typically a C2 implant, designed to execute modules and commands provided by the C2 server.</li>
+<li>Modules: Specialized code launched and managed by the implant, designed to perform specific tasks.</li>
+</ul>
+<h1 id="dont-infect-yourself">Don't Infect Yourself</h1>
+<p>Mistakes happen. Even the most careful malware authors can accidentally infect their own systems. If you're going to write malware, you need to take precautions against self-infection. Here are some tips:</p>
+<ul>
+<li>Use virtual machines. If you're using cloud services, use disposable VMs, such as Google's <a href="https://cloud.google.com/spot-vms">Spot VMs</a>.</li>
+<li>Avoid developing, building and testing malware on your primary workstation.</li>
+<li>Use separate VMs for coding, building and testing, to avoid cross-contamination.</li>
+<li>Use a separate network for testing, and disable all external network access to the testing VM.</li>
+<li>Keep regular, redundant backups of your VMs and other essential data, and test your backups regularly.</li>
+<li>"De-claw" your malware during testing, using benign placeholders for dangerous components whenever possible.</li>
+<li>When testing propagation techniques, use a limited scope to prevent accidental infection.</li>
+<li>Disconnect shared drives and network shares when testing malware.</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../0x20%20Analysis/00%20Introduction/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../0x20%20Analysis/00%20Introduction/" class="btn btn-xs btn-link">
+        Know the Enemy
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../00%20Introduction/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../00%20Introduction/" class="btn btn-xs btn-link">
+        Let's Write Some Malware!
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x10 Design/01 Overview.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>

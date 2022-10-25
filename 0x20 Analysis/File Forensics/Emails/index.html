@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x20%20Analysis/File%20Forensics/Emails/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Emails - ScriptSharks</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Introduction", url: "#_top", children: [
+          ]},
+          {title: "EML Files", url: "#eml-files", children: [
+              {title: "Dynamic Analysis", url: "#dynamic-analysis" },
+              {title: "Static Analysis", url: "#static-analysis" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../0x30%20Resources/Software/Virtual%20Machines/00%20Background/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../0x30%20Resources/Software/Virtual%20Machines/00%20Background/" class="btn btn-xs btn-link">
+        A Little VM History
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../00%20Introduction/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../00%20Introduction/" class="btn btn-xs btn-link">
+        Know the Enemy
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="introduction">Introduction</h1>
+<p>Email is a ubiquitous form of communication, and has been one of the most-abused initial-access vectors throughout malware history. Whether exploiting vulnerabilities in the email client, or simply tricking the user into opening a malicious attachment, email is a fast and easy way to distribute malware.</p>
+<h1 id="eml-files">EML Files</h1>
+<p>When reporting a malicious email, it is common for users to export the email as an <code>.eml</code> file, enabling them to safely pass the email along without risking further infection. In Outlook, this can be done by right-clicking the email and selecting "Forward as Attachment." The resulting attachment will be an <code>.eml</code> file, which is a simple text file containing the email headers and body, as well as any included attachments. (For more information on <code>.eml</code> file syntax and structure, check out <a href="https://docs.fileformat.com/email/eml/">the documentation over at FileFormat.com</a>.)</p>
+<h2 id="dynamic-analysis">Dynamic Analysis</h2>
+<p>The quickest way to see what's in an <code>.eml</code> file is to open the email in an email client, such as Outlook. This is also the most dangerous approach, as it will execute any embedded macros or scripts. For this reason, it is recommended that you use a virtual machine or sandboxed environment for this analysis. Be sure to use a snapshot, so you can revert to a clean state if necessary.</p>
+<p>By using an email client (preferrably the one used by the phishing target), you can see the email as its author intended. You can see the message, the formatting, and embedded images or attachments. Phishers will often attempt to imitate the look and feel of legitimate emails, such as password-reset reminders or overdue payment notices. By viewing the email in an email client, you can see how the phisher crafted their deception. You can also extract attachments and images from the email, which may contain malware.</p>
+<p>One of the risks of this method is accidental execution of embedded code, or triggering call-backs to attacker-owned systems. For example, if the email loads a remote image, simply retrieving the image can give the attacker your IP and notify them that their phishing message was opened on your system. If the email exploits the email client, it could execute arbitrary code, and/or forward itself to all of the contacts in the system's address book. For these reasons, it's a good idea to keep your address book empty, and to disconnect the system from the Internet before opening the email.</p>
+<h2 id="static-analysis">Static Analysis</h2>
+<p>If you don't want to risk executing the email, you can open it in a text editor. This will allow you to see the email headers and body, as well as any embedded attachments. However, you won't be able to see the formatting or images, and attachments will need to be extracted from the email before they can be analyzed. To top it off, the email will be in a format that is difficult for humans to read, and will require some effort to parse.</p>
+<p>To make life easier, you can parse emails in Python using the <code>email</code> module. This module provides a number of classes and functions for parsing and generating email messages. Here's an example of how to parse an email in Python:</p>
+<pre><code class="language-python">&gt;&gt;&gt; import email
+&gt;&gt;&gt; with open(&quot;suspicious.eml&quot;, &quot;r&quot;) as f:
+...    eml = email.message_from_file(f)
+</code></pre>
+<p>This parses the email into a <code>Message</code> object, which is stored in the <code>eml</code> variable. To see the available headers that can be retrieved via the <code>get()</code> method, you can use the <code>keys()</code> method:</p>
+<pre><code class="language-python">&gt;&gt;&gt; eml.keys()
+['Received', 'From', 'To', 'Subject', 'Thread-Topic', ...]
+</code></pre>
+<p>You can then access the email headers using the <code>get()</code> method:</p>
+<pre><code class="language-python">&gt;&gt;&gt; print(eml.get(&quot;From&quot;))
+Clive Russel &lt;clive.russel@scriptsharks.com&gt;
+&gt;&gt;&gt; print(eml.get(&quot;Subject&quot;))
+Re: Billing Statement
+</code></pre>
+<p>To determine the content type of a <code>Message</code> object, you can use the <code>get_content_type()</code> method:</p>
+<pre><code class="language-python">&gt;&gt;&gt; eml.get_content_type()
+'multipart/mixed'
+</code></pre>
+<p>While some emails are simple and contain only a few headers and some text, others may comprise numerous conjoined sections. These are called "multipart" emails, and are often used to send HTML-formatted emails with embedded images or attachments. To determine whether an email is multipart, you can also use the <code>is_multipart()</code> method:</p>
+<pre><code class="language-python">&gt;&gt;&gt; eml.is_multipart()
+True
+</code></pre>
+<p>To retrieve the contents of the email, you can use <code>get_payload()</code>. If the email is not multipart, this will return the body of the email as a string. If the email is multipart, this will return a list containing additional <code>Message</code> objects representing each part of the email:</p>
+<pre><code class="language-python">&gt;&gt;&gt; eml.get_payload()
+[&lt;email.message.Message object at 0x107bc0340&gt;, ...]
+</code></pre>
+<p>Each of these objects can be parsed in the same way as the original email, and may themselves contain additional sections. To list all the parts a multipart email, you can use the <code>walk()</code> method:</p>
+<pre><code class="language-python">&gt;&gt;&gt; for part in eml.walk():
+...     print(part.get_content_type())
+... 
+multipart/mixed
+multipart/alternative
+text/plain
+text/html
+text/html
+</code></pre>
+<p>The <code>walk()</code> method returns a generator object which itself returns an <code>Message</code> object for each part of the email. You can capture them in a list like so:</p>
+<pre><code class="language-python">&gt;&gt;&gt; parts = list(eml.walk())
+&gt;&gt;&gt; parts
+[&lt;email.message.Message object at 0x1074206d0&gt;, ...]
+&gt;&gt;&gt; parts[0].get_content_type()
+'multipart/mixed'
+</code></pre>
+<p>You can check the filename and size of each part:</p>
+<pre><code class="language-python">&gt;&gt;&gt; for index, part in enumerate(parts):
+...     if type(part.get_payload()) == str:
+...         print(f&quot;{index}: {part.get_filename()} ({len(part.get_payload())} bytes)&quot;)
+...     else:
+...         print(f&quot;{index}: {part.get_content_type()}&quot;)
+... 
+0: multipart/mixed
+1: multipart/alternative
+2: None (249 bytes)
+3: None (3664 bytes)
+4: statement.htm (2691657 bytes)
+</code></pre>
+<p>In the above example, the two <code>None</code> parts are likely the body of the email, and the <code>statement.htm</code> part is the embedded attachment. We can grab the content of each section:</p>
+<pre><code class="language-python">&gt;&gt;&gt; parts[2].get_payload()
+'Hi Gully,\n\nPlease review the attached billing statement and let me know ...'
+&gt;&gt;&gt; parts[3].get_payload()
+'&lt;html xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot; xmlns:w=&quot;urn:schemas...'
+</code></pre>
+<p>Modern email clients often include both a plaintext and HTML-formatted version of the email. This allows the client to display the email in the format that the user prefers. The two above sections represent the plaintext and HTML versions of the message body.</p>
+<p>Sometimes it may be beneficial to export the contents of a <code>Message</code> object. For example, the <code>statement.htm</code> attachment is a large HTML file, and will be easier to analyze in a text editor or browser. To extract the contents of a <code>Message</code> object, you can use the <code>as_string()</code> and <code>as_bytes()</code> methods:</p>
+<pre><code class="language-python">&gt;&gt;&gt; # Export as string:
+&gt;&gt;&gt; with open(&quot;statement.htm&quot;, &quot;w&quot;) as f:
+...     f.write(parts[4].as_string())
+... 
+2691831
+&gt;&gt;&gt; # Export as bytes:
+&gt;&gt;&gt; with open(&quot;statement.htm&quot;, &quot;wb&quot;) as f:
+...     f.write(parts[4].as_bytes())
+... 
+2691831
+</code></pre>
+<p>For more information on using Python to manipulate <code>.eml</code> files, check out the <a href="https://docs.python.org/3/library/email.html">official documentation</a>.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../../0x30%20Resources/Software/Virtual%20Machines/00%20Background/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../../0x30%20Resources/Software/Virtual%20Machines/00%20Background/" class="btn btn-xs btn-link">
+        A Little VM History
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../00%20Introduction/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../00%20Introduction/" class="btn btn-xs btn-link">
+        Know the Enemy
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x20 Analysis/File Forensics/Emails.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>

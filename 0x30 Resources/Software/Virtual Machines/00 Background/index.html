@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x30%20Resources/Software/Virtual%20Machines/00%20Background/">
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>A Little VM History - ScriptSharks</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Back in My Day...", url: "#_top", children: [
+          ]},
+          {title: "Jeckyll and Hyde", url: "#jeckyll-and-hyde", children: [
+          ]},
+          {title: "We\u0027re Doing It Live", url: "#were-doing-it-live", children: [
+          ]},
+          {title: "Yo Dawg, I Herd You Like Computers", url: "#yo-dawg-i-herd-you-like-computers", children: [
+          ]},
+          {title: "Which is Best?", url: "#which-is-best", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script>
+      <script src="../../../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../01%20Hypervisors/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../01%20Hypervisors/" class="btn btn-xs btn-link">
+        Hypervisors 101
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../../0x20%20Analysis/File%20Forensics/Emails/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../../0x20%20Analysis/File%20Forensics/Emails/" class="btn btn-xs btn-link">
+        Emails
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="back-in-my-day">Back in My Day...</h1>
+<p>Used to be, if you wanted to try out a new OS, you'd have to install it on "bare metal." If you didn't have a spare PC, you'd wipe your old OS to try the new one. And if you didn't like the new OS? You'd re-install the old one, and have to re-install all your apps, re-configure all your settings... What a hassle.</p>
+<h1 id="jeckyll-and-hyde">Jeckyll and Hyde</h1>
+<p>Some systems could "<a href="https://en.wikipedia.org/wiki/Multi-booting">multi-boot</a>," allowing for multiple OSes on a single machine. This was great for people who wanted to explore new OSes without losing their dependable OS, or for people who needed to use tools available on different OSes. There were still some problems:</p>
+<ul>
+<li>Only one OS could run at a time.</li>
+<li>Every OS had access to every other OS; if malware ran in one OS, it could infect all the rest.</li>
+</ul>
+<h1 id="were-doing-it-live">We're Doing It Live</h1>
+<p>The Live CD was revolutionary, allowing OSes to be run from read-only CD drives without the need for installation. The first few were pretty niche, but systems like <a href="https://www.knopper.net/knoppix/index-en.html">Knoppix</a> and <a href="https://www.slax.org/">Slax</a> changed the game, providing a full-featured Linux OS on a Live CD. One notable example was <a href="https://www.backtrack-linux.org/">BackTrack</a>, a Linux Live CD designed for penetration testing. In 2013, <a href="https://www.offensive-security.com/">Offensive Security</a> rebased BackTrack on Debian instead of Ubuntu, and changed its name to <a href="https://www.kali.org/">Kali Linux</a>. Kali has become the de-facto standard for the industry.</p>
+<p>Live CDs made for great <a href="https://en.wikipedia.org/wiki/BartPE">recovery OSes</a>, and could even be configured to provide <a href="https://tails.boum.org/">anonymity and privacy</a>. But they still had some problems:</p>
+<ul>
+<li>They were read-only, so you couldn't install anything permanently without a secondary storage medium.</li>
+<li>They were slow, because they had to read from the CD drive.</li>
+</ul>
+<p>These days, people are more likely to use a Live USB drive than a Live CD, but they work in basically the same way.</p>
+<h1 id="yo-dawg-i-herd-you-like-computers">Yo Dawg, I Herd You Like Computers</h1>
+<p>As computers got faster, it became possible to run multiple OSes simultaneously, through a process called <a href="https://en.wikipedia.org/wiki/Virtualization">virtualization</a>. In this process, a single "host" OS runs a "hypervisor" that manages one or more "guest" OSes. The guest OSes are isolated from each other, and from the host OS. This allows for a lot of flexibility; for example, if you want to analyze a malware sample safely, you could spin up a temporary Windows VM in an isolated network, ensuring that it cannot spread to other systems, while simultaneously taking analysis notes on the host OS or a separate VM.</p>
+<p>VMs offer many advantages over Live CDs, such as:</p>
+<ul>
+<li>Multiple OSes can be run simultaneously on a single host.</li>
+<li>Systems can quickly and easily be restored to a known good state.</li>
+<li>VMs are isolated from the host and from each other.</li>
+<li>Multiple virtualized networks can be configured between guests on a single machine.</li>
+<li>VMs can be cloned and moved between machines.</li>
+<li>VMs can be run on cloud services, reducing the need for expensive local hardware and complicated upkeep.</li>
+</ul>
+<h1 id="which-is-best">Which is Best?</h1>
+<p>For the purposes of malware design and analysis, we advise the use of VMs over Live CDs/USBs, dual-booting, and full-disk installs, as they offer the most flexibility and control. However, there are some reasons and situations for which Live CDs/USBs are preferable:</p>
+<ul>
+<li>Some systems, such as macOS, cannot easily be virtualized.</li>
+<li>Live CDs/USBs are better-suited for forensic analysis of physical hardware, such as infected hard drives.</li>
+<li>Some specialized hardware cannot easily be eulated or passed through to a VM.</li>
+</ul>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../01%20Hypervisors/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../01%20Hypervisors/" class="btn btn-xs btn-link">
+        Hypervisors 101
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../../0x20%20Analysis/File%20Forensics/Emails/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../../0x20%20Analysis/File%20Forensics/Emails/" class="btn btn-xs btn-link">
+        Emails
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x30 Resources/Software/Virtual Machines/00 Background.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>
