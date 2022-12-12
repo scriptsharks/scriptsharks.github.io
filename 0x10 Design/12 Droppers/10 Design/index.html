@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x10%20Design/12%20Droppers/10%20Design/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Step 0: Designing a Dropper - ScriptSharks</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Putting it all Together", url: "#_top", children: [
+              {title: "The Con", url: "#the-con" },
+              {title: "Design Goals", url: "#design-goals" },
+              {title: "Build Process", url: "#build-process" },
+              {title: "Requirements", url: "#requirements" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../20%20LNK/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../20%20LNK/" class="btn btn-xs btn-link">
+        Step 1: Stager and LNK
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../00%20Intro/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../00%20Intro/" class="btn btn-xs btn-link">
+        Dropper Basics
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="putting-it-all-together">Putting it all Together</h1>
+<p>In the <a href="/0x10%20Design/12%20Droppers/00%20Intro/#dropper-examples">introduction to droppers</a>, we introduced Maldocs, as well as LNK, ISO and HTML droppers. After maldocs were crippled in 2022, threat actors adopted the other three methods, often in combination. In this section, we'll design our own dropper, mirroring a common attack pattern observed in malicious phishing email attachments.</p>
+<h2 id="the-con">The Con</h2>
+<p>Phishing emails are the most common method by which malware is distributed. With this in mind, let's build a dropper for a hypothetical "fraudulent charge" phishing scam. In this common ruse, criminals pose as banks or online retailers, sending a "fraud prevention" notice to vitcims. The emails urge victims to respond quickly to avoid paying for a series of high-value purchases. We'll disguise our dropper as an invoice, attached to the phishing email, which will launch a malware stager.</p>
+<h2 id="design-goals">Design Goals</h2>
+<p>Since this is a <a href="https://en.wikipedia.org/wiki/Proof_of_concept">Proof-of-Concept</a> (PoC) and not part of a real-world phishing campaign, we'll keep things simple and focus on the key elements of this common attack pattern:</p>
+<p><code>Phishing Email -&gt; HTML -&gt; ISO -&gt; LNK -&gt; Stager</code></p>
+<ol>
+<li>We'll create an HTML attachment designed to be sent via phishing email.</li>
+<li>The HTML will contain a Base64-encoded ISO, as well as some JavaScript code.</li>
+<li>The JavaScript will decode and "download" the ISO to the victim's computer.</li>
+<li>The ISO will contain a hidden directory and a LNK file, disguised as a WordPad document.</li>
+<li>The LNK file will launch a PowerShell stager located in the hidden directory.</li>
+</ol>
+<p>Since our focus is dropper desgign, we'll use a minimal stager. When the dropper is complete, it should be easy enough to swap this out for something more robust.</p>
+<h2 id="build-process">Build Process</h2>
+<p>Now that we've defined our dropper's attack chain chronologically, we can begin building the dropper. It's important to note how each step depends on the others. The phishing email depends upon the existence of the HTML file, which depends upon the existence of the ISO, which is constructed from the LNK and stager code. Therefore, we'll need to build the dropper in reverse; once we've got a stager, we can create the LNK file. With these in-hand, we'll construct the ISO, which we'll then encode and embed into the HTML file, along with the JavaScript code necessary to trigger the download. Only then will the final HTML dropper be complete.</p>
+<h2 id="requirements">Requirements</h2>
+<p>To build this dropper, we'll need access to a <a href="/0x30%20Tools%20of%20the%20Trade/Virtual%20Machines/02%20Guest%20OSes/#malware-development">Windows VM</a> with PowerShell installed.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../20%20LNK/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../20%20LNK/" class="btn btn-xs btn-link">
+        Step 1: Stager and LNK
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../00%20Intro/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../00%20Intro/" class="btn btn-xs btn-link">
+        Dropper Basics
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x10 Design/12 Droppers/10 Design.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>

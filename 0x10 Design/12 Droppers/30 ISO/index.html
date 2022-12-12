@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x10%20Design/12%20Droppers/30%20ISO/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Step 2: Build the ISO - ScriptSharks</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "ISO Design", url: "#_top", children: [
+          ]},
+          {title: "ISO Construction", url: "#iso-construction", children: [
+          ]},
+          {title: "Confirming the Build", url: "#confirming-the-build", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../40%20HTML/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../40%20HTML/" class="btn btn-xs btn-link">
+        Step 3: Assemble the HTML
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../20%20LNK/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../20%20LNK/" class="btn btn-xs btn-link">
+        Step 1: Stager and LNK
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1>Step 2: Build the ISO</h1>
+
+<h2 id="iso-design">ISO Design</h2>
+<p>Having completed the <a href="/0x10%20Design/12%20Droppers/20%20LNK/#lnk-construction">LNK dropper</a> and its associated stager, we can now bundle them in an ISO. When the target opens the ISO, we only want them to see the LNK file, not the directory containing the stager code. Therefore, when making the ISO, we'll need to hide the <code>stager</code> directory.</p>
+<h2 id="iso-construction">ISO Construction</h2>
+<p>Windows provides simple tools for reading ISO files, but no built-in functionality for creating them. We'll use PowerShell, along with a custom ISO library, to put everything together.</p>
+<p>First, download the <a href="https://github.com/wikijm/PowerShell-AdminScripts/blob/master/Miscellaneous/New-IsoFile.ps1">New-IsoFile.ps1</a> script and save it into the <code>PoC Dropper</code> directory. Then create a PowerShell script called <code>build_iso.ps1</code> in the same directory, with the following contents:</p>
+<pre><code class="language-sh">. .\New-IsoFile.ps1; # Load the New-IsoFile cmdlet.
+
+# Hide the stager folder
+Set-ItemProperty -Path &quot;iso\stager&quot; -Name &quot;Attributes&quot; -Value &quot;Hidden&quot;;
+# Create the ISO
+dir -force iso | New-IsoFile -Path &quot;document_archive.iso&quot; -Media CDR -Title &quot;Documents&quot; -Force | Out-Null;
+# Un-hide the stager folder
+Set-ItemProperty -Path &quot;iso\stager&quot; -Name &quot;Attributes&quot; -Value &quot;Normal&quot;;
+</code></pre>
+<p>This script hides the <code>stager</code> directory, builds an ISO called <code>document_archive.iso</code> in the <code>PoC Dropper</code> directory, then un-hides the <code>stager</code> directory.</p>
+<h2 id="confirming-the-build">Confirming the Build</h2>
+<p>Before we send the ISO to a target, we need to confirm that it works. Double-click the resulting <code>document_archive.iso</code>. When it opens, you should see the <code>Invoice_1234.doc.lnk</code> file:</p>
+<p><img alt="Invoice file is visible inside the ISO." src="../img/invoice.jpg" /></p>
+<p>If we enable the <strong>Hidden items</strong> option in the <strong>View</strong> menu, we can see the hidden <code>stager</code> directory:</p>
+<p><img alt="Stager directory is hidden." src="../img/hidden_stager.jpg" /></p>
+<p>Success! We're now ready to build the HTML dropper.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../40%20HTML/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../40%20HTML/" class="btn btn-xs btn-link">
+        Step 3: Assemble the HTML
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../20%20LNK/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../20%20LNK/" class="btn btn-xs btn-link">
+        Step 1: Stager and LNK
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x10 Design/12 Droppers/30 ISO.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>

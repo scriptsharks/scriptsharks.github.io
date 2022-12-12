@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x10%20Design/12%20Droppers/00%20Intro/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Dropper Basics - ScriptSharks</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "What\u0027s a Dropper?", url: "#_top", children: [
+              {title: "Core Features", url: "#core-features" },
+          ]},
+          {title: "Dropper Examples", url: "#dropper-examples", children: [
+              {title: "The Maldoc", url: "#the-maldoc" },
+              {title: "The LNK Dropper", url: "#the-lnk-dropper" },
+              {title: "The ISO Dropper", url: "#the-iso-dropper" },
+              {title: "The HTML Dropper", url: "#the-html-dropper" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../10%20Design/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../10%20Design/" class="btn btn-xs btn-link">
+        Step 0: Designing a Dropper
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../11%20Overview/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../11%20Overview/" class="btn btn-xs btn-link">
+        11 Malware Design Overview
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="whats-a-dropper">What's a Dropper?</h1>
+<p>A dropper is a small, self-contained mechanism for delivering a malware stager to a target system. Like a gift-wrapped box, it is designed to entice users to open it and retrieve the gift inside. Droppers and stagers are often coupled, and the terms are often used interchangeably, but I prefer to make a distinction between the two.</p>
+<h2 id="core-features">Core Features</h2>
+<p>Malware droppers should aim for the following features:</p>
+<ul>
+<li><strong>Small size.</strong> Droppers should be as small as possible, to minimize the amount of data that must be downloaded. This is especially important for droppers that are delivered via email, where the size of the attachment is limited.</li>
+<li><strong>Self-contained.</strong> Droppers should be self-contained, meaning that they do not require an internet connection, nor any non-standard files or libraries, in order to function. This allows droppers to function on as many systems as possible.</li>
+<li><strong>Low-privilege.</strong> Droppers should run without administrative privileges, so they can be executed even by unprivileged users.</li>
+<li><strong>Non-malicious.</strong> Droppers should not take any malicious actions on their own. Their sole purpose is to deliver a stager to a target system. This helps to avoid detection and prevention by system security software.</li>
+<li><strong>Stager-independent.</strong> Droppers should be decoupled from the stagers they deliver, so that components can be replaced with minimal effort.</li>
+</ul>
+<h1 id="dropper-examples">Dropper Examples</h1>
+<h2 id="the-maldoc">The Maldoc</h2>
+<p>When it comes to dropper design, simplicity is key. Historically, Microsoft Office was one of the most popular tools for creating malware droppers. This was partly due to the suite's global popularity, as well as the inclusion of a built-in scripting language, VBA.</p>
+<p>Creating a "maldoc" dropper was fairly simple. To start, the attacker would have a malware stager, often in the form of a PowerShell script, which could be delivered as a "one-liner" or as a script. The attacker would then create a Microsoft Word or Excel document, and embed the stager in the document as a VBA macro. When opened, the maldoc would execute the embedded macro-script, which would in turn launch the stager.</p>
+<p>This approach was highly effective due to the prevalence of Mirosoft Office in corporate environments. Employees commonly sent and received Office documents via email as part of their job duties, so they rarely thought twice about opening a maldoc.</p>
+<p>However, in July of 2022, Microsoft released a patch that disabled VBA macros by default, which crippled the effectiveness of "maldoc" droppers. In response, threat actors have migrated to other dropper techniques.</p>
+<h2 id="the-lnk-dropper">The LNK Dropper</h2>
+<p>Malware authors are quite familiar with abusing Microsoft Windows Shortcut (<code>.lnk</code>) files. In 2010, attackers abused a <a href="https://learn.microsoft.com/en-us/security-updates/securitybulletins/2010/ms10-046">Windows 0-day</a> to distribute the <a href="https://support.radware.com/ci/okcsFattach/get/15458_3">Stuxnet Worm</a>. In 2012, hackers used <code>.lnk</code> files to <a href="https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/you-down-with-lnk/">steal password hashes</a> from unsuspecting users. In 2013, <code>.lnk</code> files were used to <a href="https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=1d5f06a6-c969-4678-91be-afbb864a696c&amp;CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&amp;tab=librarydocuments">recombine fragmented malware</a> prior to execution. In 2014, malware authors used <code>.lnk</code> files to launch malware which had been <a href="https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/lnk-files-in-email-malware-distribution/">renamed with benign-looking file extensions</a>, such as <code>.pdf</code> and <code>.doc</code>. This was possible because <code>cmd.exe</code> used the <code>CreateProcess</code> API, which checked for the presence of PE headers, rather than using the file's extension, to determine how it should be handled.</p>
+<p>In 2015, attackers used <code>.lnk</code> files to <a href="https://www.avira.com/en/blog/lnk-files-shortcuts-faster-infections">hide malware execution</a> on target systems. The method was pretty straightforward:</p>
+<ol>
+<li>Set the "hidden" attribute of a legitimate file or directory on the target system, so that the user can no longer see it.</li>
+<li>Drop a malicious script or executable on the system, also hidden.</li>
+<li>Create a <code>.lnk</code> file which masquerades as the legitimate file or directory, but which launches the malware before opening the expected file.</li>
+</ol>
+<p>This was as simple as creating a shortcut, then modifying its "target" attribute to point to <code>cmd.exe</code> with a crafted command line, like so:</p>
+<pre><code class="language-sh">cmd.exe /c start malware.vbs &amp; start legit_file.exe &amp; exit
+</code></pre>
+<p>This would launch <code>malware.vbs</code>, then <code>legit_file.exe</code>, and then exit. To an unobservant user, it would appear as if the shortcut was simply opening the expected file.</p>
+<h2 id="the-iso-dropper">The ISO Dropper</h2>
+<p>Much like <a href="https://en.wikipedia.org/wiki/ZIP_(file_format)">ZIP files</a>, ISO files are archives that wrap multiple files into one. ISOs were originally designed for creating backups of optical media, such as CD-ROMs. In early versions of Windows, users had to install special third-party tools in order to work with ISO files. This changed in 2012, when Microsoft added native ISO support to Windows 8, allowing users to be mount ISO files as virtual drives. By 2017, malware authors were <a href="https://cofense.com/new-phishing-emails-deliver-malicious-iso-files-evade-detection/">taking full advantage</a> of this feature, using ISO files as a delivery mechanism for malware.</p>
+<p>The early ISO droppers were fairly simple, containing a malicious <code>.exe</code> file masquerading as an Office document or PDF. Attackers would simply attach the ISO to outbound phishing emails, often masquerading as purchase orders, receipts, or other official-looking documents. Unsuspecting users would open the ISO and execute the malware within. This method was surprisingly effective, considering how little the attackers did to disguise the dropper.</p>
+<h2 id="the-html-dropper">The HTML Dropper</h2>
+<p>Adversaries have been abusing HTML and in-browser scripting languages since the dawn of time (or at least <a href="https://www.wired.com/1998/11/virus-thrives-on-html/">since 1998</a>). This trend continued <a href="https://www.virusbulletin.com/virusbulletin/2010/10/it-s-just-spam-it-can-t-hurt-right">into the 2010s</a>, and still takes place <a href="https://blog.barracuda.com/2022/06/28/threat-spotlight-malicious-html-attachments/">today</a>. With HTML and JavaScript, attackers can easily create an inconspicuous-looking dropper by embedding a Base64-encoded malware package within a JavaScript wrapper which, when the HTML file is opened, will trigger a "download" of the decoded package to the user's hard drive.</p>
+<p>This dropper method is popular for a number of reasons: it doesn't involve common red-flag file extensions (like <code>.exe</code>, <code>.dll</code>, <code>.ps1</code>, etc.); embedded JavaScript code can be obfuscated to hide their contents from email attachment scanners; and it's easy to mimic the look of a trustworthy website, aiding in deception.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../10%20Design/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../10%20Design/" class="btn btn-xs btn-link">
+        Step 0: Designing a Dropper
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../11%20Overview/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../11%20Overview/" class="btn btn-xs btn-link">
+        11 Malware Design Overview
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x10 Design/12 Droppers/00 Intro.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>
