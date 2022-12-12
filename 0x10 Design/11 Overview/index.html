@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="author" content="Kristen M. Steffen">
-    <link rel="canonical" href="https://www.scriptsharks.com/0x10%20Design/01%20Overview/">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x10%20Design/11%20Overview/">
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Malware Design Overview - ScriptSharks</title>
+    <title>11 Malware Design Overview - ScriptSharks</title>
     <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../css/base.css" rel="stylesheet">
@@ -37,7 +37,7 @@
           {title: "Know Your Kill Chain", url: "#know-your-kill-chain", children: [
               {title: "Martin and Mitre", url: "#martin-and-mitre" },
               {title: "Breaking it Down", url: "#breaking-it-down" },
-              {title: "Stagers, Payloads and Modules", url: "#stagers-payloads-and-modules" },
+              {title: "Droppers, Stagers, Payloads and Modules", url: "#droppers-stagers-payloads-and-modules" },
           ]},
           {title: "Don\u0027t Infect Yourself", url: "#dont-infect-yourself", children: [
           ]},
@@ -67,20 +67,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../0x20%20Analysis/00%20Introduction/" class="btn btn-xs btn-default pull-right">
+      <a href="../12%20Droppers/00%20Intro/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../0x20%20Analysis/00%20Introduction/" class="btn btn-xs btn-link">
-        Know the Enemy
+      <a href="../12%20Droppers/00%20Intro/" class="btn btn-xs btn-link">
+        Dropper Basics
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../00%20Introduction/" class="btn btn-xs btn-default pull-left">
+      <a href="../10%20Introduction/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../00%20Introduction/" class="btn btn-xs btn-link">
-        Let's Write Some Malware!
+        Previous</a><a href="../10%20Introduction/" class="btn btn-xs btn-link">
+        10 Let's Write Some Malware!
       </a>
     </div>
     
@@ -157,13 +157,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 </ol>
 <p>Once the main payload is executed, it will typically deploy a command-and-control module, which will then use additional modules to handle persistence, privilege escalation, lateral movement, etc. This is a common design pattern, employed by countless malware families. In the case of ransomware, the malware will typically deploy data exfiltration and encryption modules, designed to steal and encrypt the victim's data.</p>
-<h2 id="stagers-payloads-and-modules">Stagers, Payloads and Modules</h2>
-<p>Modern malware is typically divided into three distinct components:</p>
+<h2 id="droppers-stagers-payloads-and-modules">Droppers, Stagers, Payloads and Modules</h2>
+<p>Modern malware is typically divided into a few distinct components:</p>
 <ul>
-<li>Stagers: Small, lightweight code designed to download and execute the main payload.</li>
-<li>Payloads: Typically a C2 implant, designed to execute modules and commands provided by the C2 server.</li>
-<li>Modules: Specialized code launched and managed by the implant, designed to perform specific tasks.</li>
+<li>Droppers: A self-contained package designed to deliver and launch a malware stager.</li>
+<li>Stagers: Lightweight code designed to install a malware payload onto a system.</li>
+<li>Payloads: Typically a C2 implant, providing remote command and control to attackers.</li>
+<li>Modules: Single-purpose, specialized code, designed for use with a modular C2 implant.</li>
 </ul>
+<p>We will explore each component in more detail in the following sections.</p>
 <h1 id="dont-infect-yourself">Don't Infect Yourself</h1>
 <p>Mistakes happen. Even the most careful malware authors can accidentally infect their own systems. If you're going to write malware, you need to take precautions against self-infection. Here are some tips:</p>
 <ul>
@@ -188,20 +190,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
     
     <div class="wm-article-nav pull-right">
-      <a href="../../0x20%20Analysis/00%20Introduction/" class="btn btn-xs btn-default pull-right">
+      <a href="../12%20Droppers/00%20Intro/" class="btn btn-xs btn-default pull-right">
         Next
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </a>
-      <a href="../../0x20%20Analysis/00%20Introduction/" class="btn btn-xs btn-link">
-        Know the Enemy
+      <a href="../12%20Droppers/00%20Intro/" class="btn btn-xs btn-link">
+        Dropper Basics
       </a>
     </div>
     
     <div class="wm-article-nav">
-      <a href="../00%20Introduction/" class="btn btn-xs btn-default pull-left">
+      <a href="../10%20Introduction/" class="btn btn-xs btn-default pull-left">
         <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../00%20Introduction/" class="btn btn-xs btn-link">
-        Let's Write Some Malware!
+        Previous</a><a href="../10%20Introduction/" class="btn btn-xs btn-link">
+        10 Let's Write Some Malware!
       </a>
     </div>
     
@@ -212,7 +214,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <footer class="col-md-12 wm-page-content">
       <p>
-        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x10 Design/01 Overview.md"><i class="fa fa-github"></i>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x10 Design/11 Overview.md"><i class="fa fa-github"></i>
 Edit on GitHub</a>
       </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
   <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>

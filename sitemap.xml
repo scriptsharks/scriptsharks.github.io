@@ -2,92 +2,122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://www.scriptsharks.com/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/00%20Sipping%20from%20the%20Fire%20Hose/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/01%20In%20the%20Beginning/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/02%20Malware%20Explosion/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/03%20The%2090s/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/04%20Millenial%20Malware/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x00%20History/05%20Ransomware%20Rising/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.scriptsharks.com/0x10%20Design/00%20Introduction/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <loc>https://www.scriptsharks.com/0x10%20Design/10%20Introduction/</loc>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.scriptsharks.com/0x10%20Design/01%20Overview/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <loc>https://www.scriptsharks.com/0x10%20Design/11%20Overview/</loc>
+         <lastmod>2022-12-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.scriptsharks.com/0x10%20Design/12%20Droppers/00%20Intro/</loc>
+         <lastmod>2022-12-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.scriptsharks.com/0x10%20Design/12%20Droppers/10%20Design/</loc>
+         <lastmod>2022-12-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.scriptsharks.com/0x10%20Design/12%20Droppers/20%20LNK/</loc>
+         <lastmod>2022-12-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.scriptsharks.com/0x10%20Design/12%20Droppers/30%20ISO/</loc>
+         <lastmod>2022-12-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.scriptsharks.com/0x10%20Design/12%20Droppers/40%20HTML/</loc>
+         <lastmod>2022-12-12</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.scriptsharks.com/0x10%20Design/13%20Stagers/00%20Intro/</loc>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x20%20Analysis/00%20Introduction/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0x20%20Analysis/File%20Forensics/Emails/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.scriptsharks.com/0x30%20Resources/Software/Virtual%20Machines/00%20Background/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <loc>https://www.scriptsharks.com/0x30%20Tools%20of%20the%20Trade/Virtual%20Machines/00%20Background/</loc>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.scriptsharks.com/0x30%20Resources/Software/Virtual%20Machines/01%20Hypervisors/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <loc>https://www.scriptsharks.com/0x30%20Tools%20of%20the%20Trade/Virtual%20Machines/01%20Hypervisors/</loc>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.scriptsharks.com/0x30%20Resources/Software/Virtual%20Machines/02%20Guest%20OSes/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <loc>https://www.scriptsharks.com/0x30%20Tools%20of%20the%20Trade/Virtual%20Machines/02%20Guest%20OSes/</loc>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0xFF%20About/FC%20Old%20News/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0xFF%20About/FD%20Origins/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0xFF%20About/FE%20Changelog/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://www.scriptsharks.com/0xFF%20About/FF%20License/</loc>
-         <lastmod>2022-10-25</lastmod>
+         <lastmod>2022-12-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

