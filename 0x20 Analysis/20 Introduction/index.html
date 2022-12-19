@@ -35,6 +35,7 @@
           {title: "The Flip-Side", url: "#_top", children: [
           ]},
           {title: "Primary Objectives", url: "#primary-objectives", children: [
+              {title: "Regarding Attribution", url: "#regarding-attribution" },
           ]},
           {title: "Keeping it Safe", url: "#keeping-it-safe", children: [
           ]},
@@ -101,6 +102,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p>Attackers will do everything in their power to thwart analysis—from obfuscating code to impede analysis, to employing the tactics of other well-known threat actors to muddle attribution. As a result, the analysis process can be difficult and time-consuming. In some cases, full-scale analysis can take weeks or months, with inconclusive results.</p>
 <p>The threat landscape evolves at a rapid pace; rather than attempting to perform a full analysis of every new sample, it is better to triage, prioritize, and analyze samples according to their potential impact, postponing lower-priority samples for later analysis.</p>
+<h2 id="regarding-attribution">Regarding Attribution</h2>
+<p>When a breach takes place, the first question everyone asks is "Who is responsible?" This is often a difficult question to answer, and it is best to avoid haphazard guesses. Attribution can help defenders understand an adversary; if their strategies are known, defenders can respond accordingly. However, <em>mis-attribution</em> can cause defenders to focus in the wrong places, and can cause trouble when one group takes the blame for another's actions. It is common for advanced threat actors to imitate the behaviors of other threat actors, to muddle attribution.</p>
+<p>Rather than focusing heavily on attribution, it is better to ask, "How can we detect and prevent this in the future?" By analyzing how malware functions and propagates, we can reveal attack patterns—and build defenses—which are threat-agnostic. This protects systems against <em>all</em> attackers, not just specific threats.</p>
 <h1 id="keeping-it-safe">Keeping it Safe</h1>
 <p>Malware analysis is a dangerous business. Malware authors are constantly developing new techniques, not only to thwart analysis, but in some cases, to <a href="https://blog.google/threat-analysis-group/new-campaign-targeting-security-researchers/">damage or infect researchers' systems</a>. It is essential to protect your analysis environment from data loss and infection. The following steps will help you keep your analysis environment safe:</p>
 <ul>
